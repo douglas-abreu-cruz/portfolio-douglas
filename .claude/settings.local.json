@@ -27,7 +27,9 @@
       "PowerShell($css = Invoke-WebRequest -Uri \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0r8dfba._.css\" -UseBasicParsing; $css.Content | Select-String -Pattern \"hub-outer|hub-grid|gallery-grid|flip-card\" | Select-Object -First 20)",
       "PowerShell($dirs = @\\(\"nutrachamps\",\"vaction\",\"uaipizza\",\"pentel\",\"dsm\",\"fraternity\"\\); foreach \\($d in $dirs\\) { New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\Douglas\\\\Documents\\\\portfolio-douglas\\\\app\\\\design\\\\$d\" | Out-Null }; Write-Output \"Directories created.\")",
       "Skill(claude-api)",
-      "Bash(npx motion-primitives@latest add text-shimmer)"
+      "Bash(npx motion-primitives@latest add text-shimmer)",
+      "PowerShell(Rename-Item *)",
+      "PowerShell(Copy-Item *)"
     ]
   }
 }

@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, type CSSProperties } from 'react'
 import { motion } from 'framer-motion'
@@ -102,7 +102,7 @@ export default function PropsPage() {
       {/* ── Sticky header ─────────────────────────────────────────────── */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button onClick={() => router.push('/cg')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
+          <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
             ← 3D Artist
           </button>
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -329,7 +329,7 @@ export default function PropsPage() {
               <span key={tool} style={{ fontSize: 22, letterSpacing: '0.08em', padding: '4px 12px', border: '1px solid rgba(212,168,0,0.4)', color: ACCENT }}>{tool}</span>
             ))}
           </div>
-          <button onClick={() => router.push('/cg')} style={{ background: 'none', border: 'none', padding: 0, color: ACCENT, cursor: 'pointer', fontSize: 26, letterSpacing: '0.04em' }}>
+          <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: 'none', padding: 0, color: ACCENT, cursor: 'pointer', fontSize: 26, letterSpacing: '0.04em' }}>
             ← Back to 3D Artist
           </button>
         </div>

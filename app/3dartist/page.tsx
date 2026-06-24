@@ -10,7 +10,7 @@ const PROJECTS: Project[] = [
     tools: ['Maya', 'V-Ray', 'Substance Painter', 'Nuke'],
     thumb: '/images/preview/theora.png',
     backThumb: '/images/preview/theora.png',
-    href: '/cg/theora',
+    href: '/3dartist/theora',
   },
   {
     num: '02',
@@ -19,7 +19,7 @@ const PROJECTS: Project[] = [
     tools: ['Maya', 'Substance Painter'],
     thumb: '/images/preview/butterfly.png',
     backThumb: '/images/preview/butterfly.png',
-    href: '/cg/butterfly',
+    href: '/3dartist/butterfly',
   },
   {
     num: '03',
@@ -28,7 +28,7 @@ const PROJECTS: Project[] = [
     tools: ['Maya', 'Substance Painter'],
     thumb: '/images/preview/props.png',
     backThumb: '/images/preview/props.png',
-    href: '/cg/props',
+    href: '/3dartist/props',
   },
   {
     num: '04',
@@ -37,7 +37,7 @@ const PROJECTS: Project[] = [
     tools: ['Maya', 'ZBrush', 'Substance Painter'],
     thumb: '/images/preview/robot.png',
     backThumb: '/images/preview/robot.png',
-    href: '/cg/robot',
+    href: '/3dartist/robot',
   },
   {
     num: '05',
@@ -46,7 +46,7 @@ const PROJECTS: Project[] = [
     tools: ['3ds Max', 'Photoshop'],
     thumb: '/images/preview/pentel3d.png',
     backThumb: '/images/preview/pentel3d.png',
-    href: '/cg/pentel3d',
+    href: '/3dartist/pentel3d',
   },
   {
     num: '06',
@@ -55,7 +55,7 @@ const PROJECTS: Project[] = [
     tools: ['Houdini', 'ZBrush', 'Substance Painter'],
     thumb: '/images/preview/environment.png',
     backThumb: '/images/preview/environment.png',
-    href: '/cg/environment',
+    href: '/3dartist/environment',
   },
 ]
 

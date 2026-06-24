@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, type CSSProperties } from 'react'
 import { motion } from 'framer-motion'
@@ -17,7 +17,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
 const VP = { once: true, margin: '-100px' } as const
 const FV = { duration: 0.6 }
 
-const p = (f: string) => `/images/pentel3d/${f}`
+const p = (f: string) => `/images/environment/${f}`
 
 function ZoomableMedia({ src, alt, type = 'image' as 'image' | 'video', maxHeight = '520px', wrapStyle, imgStyle }: {
   src: string; alt: string; type?: 'image' | 'video'
@@ -85,14 +85,14 @@ function SectionLabel({ text }: { text: string }) {
 }
 
 const STATS = [
-  { num: '3',    label: 'Product lines' },
-  { num: '0',    label: 'Photo shoots needed' },
-  { num: '100%', label: '3D production' },
+  { num: '3',     label: 'Environments' },
+  { num: '7',     label: 'Software tools' },
+  { num: 'Multi', label: 'Pipeline' },
 ]
 
-const TOOLS = ['3ds Max', 'V-Ray']
+const TOOLS = ['ZBrush', 'Maya', 'Substance Painter', 'Mari', 'Houdini', 'V-Ray', 'SketchUp']
 
-export default function Pentel3DPage() {
+export default function EnvironmentPage() {
   const router = useRouter()
   const { isMobile } = useBreakpoint()
 
@@ -102,7 +102,7 @@ export default function Pentel3DPage() {
       {/* ── Sticky header ─────────────────────────────────────────────── */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button onClick={() => router.push('/cg')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
+          <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
             ← 3D Artist
           </button>
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -118,13 +118,13 @@ export default function Pentel3DPage() {
       >
         <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
-            Product Render — 05
+            Environment — 06
           </p>
           <h1 style={{ fontSize: isMobile ? 'clamp(88px, 28vw, 144px)' : 'clamp(88px, 14vw, 192px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: FG, marginBottom: 20 }}>
-            Pentel 3D
+            Environment
           </h1>
           <p style={{ fontSize: isMobile ? 32 : 40, color: MUTED, fontWeight: 400 }}>
-            Stationery product visualization
+            Three worlds, three pipelines
           </p>
         </div>
       </motion.section>
@@ -135,8 +135,8 @@ export default function Pentel3DPage() {
         style={{ background: CONTENT, padding: 0, margin: 0, width: '100%' }}
       >
         <ZoomableMedia
-          src={p('pentel3d-pens.jpg')}
-          alt="Pentel pens render"
+          src={p('environment-pantano-aerial.png')}
+          alt="Pantano swamp aerial"
           type="image"
           maxHeight="520px"
           wrapStyle={{ padding: 0, margin: 0, background: 'transparent' }}
@@ -150,87 +150,187 @@ export default function Pentel3DPage() {
       >
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 720 }}>
-            Product renders for Pentel Brazil. Pens, pencils and packaging boxes modeled and rendered to commercial production standards. Built to support print and digital marketing campaigns.
+            Three distinct environment studies, each built with a different pipeline and goal. A procedural swamp, a barn interior and two residential spaces.
           </p>
         </div>
       </motion.section>
 
-      {/* ── 3. IMPACT ─ ACCENT LEFT ───────────────────────────────────── */}
+      {/* ════════════ BLOCK 1 — PANTANO ════════════════════════════════ */}
+
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 0' : '64px 0', overflow: 'hidden' }}
+        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+      >
+        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: ACCENT, marginBottom: 12 }}>
+            01 Swamp
+          </p>
+          <h2 style={{ fontSize: isMobile ? 48 : 72, fontWeight: 700, color: FG, lineHeight: 0.95, marginBottom: 28 }}>
+            Swamp
+          </h2>
+          <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 720 }}>
+            A fully procedural swamp environment built in Houdini. Every organic element generated and controlled through node-based workflows. Models sculpted in ZBrush and Maya, textured in Substance and Mari.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Pantano — impact ACCENT LEFT */}
+      <motion.section
+        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
+        style={{ background: BG, padding: isMobile ? '40px 0' : '64px 0', overflow: 'hidden' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : '0', display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'stretch' }}>
           <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0, background: ACCENT, padding: isMobile ? '36px 24px' : '48px 36px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <SectionLabel text="Precision" />
+            <SectionLabel text="Procedural" />
             <h2 style={{ fontSize: isMobile ? 36 : 48, fontWeight: 700, color: ACCENT_TEXT, lineHeight: 1.15, margin: 0 }}>
-              Commercial precision, zero photography.
+              Procedural.<br />Every element.
             </h2>
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
             <ZoomableMedia
-              src={p('pentel3d-pencils.jpg')}
-              alt="Pentel pencils render"
+              src={p('environment-pantano-aerial.png')}
+              alt="Pantano aerial view"
               type="image"
               maxHeight="480px"
-              wrapStyle={{ height: isMobile ? 'auto' : '100%' }}
-              imgStyle={{ height: isMobile ? 'auto' : '100%', objectFit: 'cover' }}
+              wrapStyle={{ background: 'transparent', overflow: 'hidden' }}
             />
           </div>
         </div>
       </motion.section>
 
-      {/* ── 4. PRODUCTS GRID ──────────────────────────────────────────── */}
+      {/* Pantano — 2 images */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-          <SectionLabel text="Products" />
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: isMobile ? 16 : 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 24 }}>
             <div>
               <ZoomableMedia
-                src={p('pentel3d-pens.jpg')}
-                alt="Pentel pens"
+                src={p('environment-pantano-bridge.png')}
+                alt="Pantano bridge"
                 type="image"
                 maxHeight="480px"
                 wrapStyle={{ background: 'transparent' }}
               />
-              <Caption text="Pens" />
+              <Caption text="Bridge" />
             </div>
             <div>
               <ZoomableMedia
-                src={p('pentel3d-pencils.jpg')}
-                alt="Pentel pencils"
+                src={p('environment-pantano-path.png')}
+                alt="Pantano stone path"
                 type="image"
                 maxHeight="480px"
                 wrapStyle={{ background: 'transparent' }}
               />
-              <Caption text="Pencils" />
-            </div>
-            <div>
-              <ZoomableMedia
-                src={p('pentel3d-boxes.jpg')}
-                alt="Pentel packaging"
-                type="image"
-                maxHeight="480px"
-                wrapStyle={{ background: 'transparent' }}
-              />
-              <Caption text="Packaging" />
+              <Caption text="Stone path" />
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* ── 5. STAT CARDS ─────────────────────────────────────────────── */}
+      {/* ════════════ BLOCK 2 — BARN ════════════════════════════════════ */}
+
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 16px 140px' : '56px 36px 120px' }}
+        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+      >
+        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: ACCENT, marginBottom: 12 }}>
+            02 Interior
+          </p>
+          <h2 style={{ fontSize: isMobile ? 48 : 72, fontWeight: 700, color: FG, lineHeight: 0.95, marginBottom: 28 }}>
+            Barn
+          </h2>
+          <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 720 }}>
+            A single interior study. A barn built and lit in Maya. Simple geometry, complex light. The challenge was making aged wood and dust feel real without overcomplicating the scene.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Barn — impact ACCENT RIGHT */}
+      <motion.section
+        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
+        style={{ background: CONTENT, padding: isMobile ? '40px 0' : '64px 0', overflow: 'hidden' }}
+      >
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : '0', display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'stretch' }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <ZoomableMedia
+              src={p('environment-barn.jpg')}
+              alt="Barn interior"
+              type="image"
+              maxHeight="480px"
+              wrapStyle={{ background: 'transparent', overflow: 'hidden' }}
+            />
+          </div>
+          <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0, background: ACCENT, padding: isMobile ? '36px 24px' : '48px 36px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <SectionLabel text="Lighting" />
+            <h2 style={{ fontSize: isMobile ? 36 : 48, fontWeight: 700, color: ACCENT_TEXT, lineHeight: 1.15, margin: 0 }}>
+              Simple geometry.<br />Complex light.
+            </h2>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ════════════ BLOCK 3 — INTERIOR ═══════════════════════════════ */}
+
+      <motion.section
+        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
+        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+      >
+        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: ACCENT, marginBottom: 12 }}>
+            03 Residential
+          </p>
+          <h2 style={{ fontSize: isMobile ? 48 : 72, fontWeight: 700, color: FG, lineHeight: 0.95, marginBottom: 28 }}>
+            Interior
+          </h2>
+          <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 720 }}>
+            Two residential spaces modeled in SketchUp and rendered in V-Ray. Clean geometry, natural light and material accuracy as the focus.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Interior — 2 images */}
+      <motion.section
+        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
+        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+      >
+        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 24 }}>
+            <div>
+              <ZoomableMedia
+                src={p('environment-interior-atrium.png')}
+                alt="Interior atrium"
+                type="image"
+                maxHeight="480px"
+                wrapStyle={{ background: 'transparent' }}
+              />
+              <Caption text="Atrium" />
+            </div>
+            <div>
+              <ZoomableMedia
+                src={p('environment-interior-bathroom.png')}
+                alt="Interior bathroom"
+                type="image"
+                maxHeight="480px"
+                wrapStyle={{ background: 'transparent' }}
+              />
+              <Caption text="Bathroom" />
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ── STAT CARDS ────────────────────────────────────────────────── */}
+      <motion.section
+        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
+        style={{ background: BG, padding: isMobile ? '40px 16px 140px' : '56px 36px 120px' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 16 }}>
             {STATS.map(card => (
-              <div key={card.num} style={{ background: BG, padding: 28 }}>
+              <div key={card.num} style={{ background: CONTENT, padding: 28 }}>
                 <p style={{ fontSize: 44, fontWeight: 500, color: ACCENT, margin: '0 0 8px' }}>{card.num}</p>
                 <p style={{ fontSize: 22, color: MUTED, letterSpacing: '0.05em', margin: 0 }}>{card.label}</p>
               </div>
@@ -247,7 +347,7 @@ export default function Pentel3DPage() {
               <span key={tool} style={{ fontSize: 22, letterSpacing: '0.08em', padding: '4px 12px', border: '1px solid rgba(212,168,0,0.4)', color: ACCENT }}>{tool}</span>
             ))}
           </div>
-          <button onClick={() => router.push('/cg')} style={{ background: 'none', border: 'none', padding: 0, color: ACCENT, cursor: 'pointer', fontSize: 26, letterSpacing: '0.04em' }}>
+          <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: 'none', padding: 0, color: ACCENT, cursor: 'pointer', fontSize: 26, letterSpacing: '0.04em' }}>
             ← Back to 3D Artist
           </button>
         </div>

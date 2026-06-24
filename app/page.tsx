@@ -64,7 +64,7 @@ const areas: Area[] = [
   },
   {
     key: 'cg',
-    href: '/cg',
+    href: '/3dartist',
     label: '3D Artist',
     desc: 'Modeling, shading\n& full CG pipeline',
     pageBg: '#363737',
@@ -132,12 +132,12 @@ const projectRoutes: Record<string, string[]> = {
     '/design/fraternity',
   ],
   cg: [
-    '/cg/theora',
-    '/cg/butterfly',
-    '/cg/props',
-    '/cg/robot',
-    '/cg/pentel3d',
-    '/cg/environment',
+    '/3dartist/theora',
+    '/3dartist/butterfly',
+    '/3dartist/props',
+    '/3dartist/robot',
+    '/3dartist/pentel3d',
+    '/3dartist/environment',
   ],
   archviz: [
     '/archviz/bathroom-katespade',

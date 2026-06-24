@@ -23,7 +23,7 @@ export function SiteHeader({ nameColor, bioColor, designerColor, linkColor }: Si
         </p>
       </div>
 
-      <nav className="site-header-nav">
+      <nav className="site-header-nav" style={{ alignSelf: 'flex-end' }}>
         <a href="/about" className="hub-nav-link" style={{ color: linkColor }}>
           About
         </a>

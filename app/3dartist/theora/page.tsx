@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import type { CSSProperties } from 'react'
 import { motion } from 'framer-motion'
@@ -98,7 +98,7 @@ export default function TheoraMotoPage() {
           display: 'flex', alignItems: 'center', gap: 20,
         }}>
           <button
-            onClick={() => router.push('/cg')}
+            onClick={() => router.push('/3dartist')}
             style={{
               background: 'none',
               border: '1px solid rgba(212,168,0,0.3)',
@@ -314,7 +314,7 @@ export default function TheoraMotoPage() {
             ))}
           </div>
           <button
-            onClick={() => router.push('/cg')}
+            onClick={() => router.push('/3dartist')}
             style={{
               background: 'none', border: 'none', padding: 0,
               color: ACCENT, cursor: 'pointer',

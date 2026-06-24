@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect, type CSSProperties } from 'react'
 import { motion } from 'framer-motion'
@@ -17,7 +17,7 @@ const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
 const VP = { once: true, margin: '-100px' } as const
 const FV = { duration: 0.6 }
 
-const p = (f: string) => `/images/robot/${f}`
+const p = (f: string) => `/images/butterfly/${f}`
 
 function ZoomableMedia({ src, alt, type = 'image' as 'image' | 'video', maxHeight = '520px', wrapStyle, imgStyle }: {
   src: string; alt: string; type?: 'image' | 'video'
@@ -85,14 +85,14 @@ function SectionLabel({ text }: { text: string }) {
 }
 
 const STATS = [
-  { num: 'Hard',   label: 'Surface asset' },
-  { num: 'Sci-Fi', label: 'Design language' },
-  { num: 'Solo',   label: 'Production' },
+  { num: 'Organic', label: 'Full pipeline' },
+  { num: 'Custom',  label: 'Rig system' },
+  { num: 'Maya',    label: 'Animation' },
 ]
 
-const TOOLS = ['Maya', 'Substance Painter', 'V-Ray']
+const TOOLS = ['ZBrush', 'Substance Painter', 'Maya']
 
-export default function RobotPage() {
+export default function ButterflyPage() {
   const router = useRouter()
   const { isMobile } = useBreakpoint()
 
@@ -102,7 +102,7 @@ export default function RobotPage() {
       {/* ── Sticky header ─────────────────────────────────────────────── */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button onClick={() => router.push('/cg')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
+          <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
             ← 3D Artist
           </button>
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -118,13 +118,13 @@ export default function RobotPage() {
       >
         <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
-            Hard Surface — 04
+            Rigging &amp; Animation — 02
           </p>
           <h1 style={{ fontSize: isMobile ? 'clamp(88px, 28vw, 144px)' : 'clamp(88px, 14vw, 192px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: FG, marginBottom: 20 }}>
-            Sci-Fi Medical Robot
+            Butterfly
           </h1>
           <p style={{ fontSize: isMobile ? 32 : 40, color: MUTED, fontWeight: 400 }}>
-            Concept kiosk asset
+            Modeling, rigging and animation
           </p>
         </div>
       </motion.section>
@@ -135,8 +135,8 @@ export default function RobotPage() {
         style={{ background: CONTENT, padding: 0, margin: 0, width: '100%' }}
       >
         <ZoomableMedia
-          src={p('robot-hero.jpg')}
-          alt="Sci-Fi Medical Robot"
+          src={p('butterfly-model.transp.png')}
+          alt="Butterfly model"
           type="image"
           maxHeight="520px"
           wrapStyle={{ padding: 0, margin: 0, background: 'transparent' }}
@@ -146,101 +146,114 @@ export default function RobotPage() {
       {/* ── 2. BRIEF ──────────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 720 }}>
-            A sci-fi medical kiosk designed as a fully autonomous robot asset. Hard surface modeling pushed to production quality. Clean panel lines, functional design logic and a surface finish that reads as manufactured, not modeled.
+            A full organic pipeline starting from sculpture in ZBrush, through texturing in Substance Painter, rigging and animation in Maya. Every wing movement driven by a custom rig built to replicate natural flight.
           </p>
         </div>
       </motion.section>
 
-      {/* ── 3. IMPACT ─ ACCENT RIGHT ──────────────────────────────────── */}
+      {/* ── 3. MODEL ─ ACCENT RIGHT ───────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 0' : '64px 0', overflow: 'hidden' }}
+        style={{ background: BG, padding: isMobile ? '40px 0' : '64px 0', overflow: 'hidden' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : '0', display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'stretch' }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <ZoomableMedia
-              src={p('robot-front.jpg')}
-              alt="Robot front view"
+              src={p('butterfly-model.png')}
+              alt="Butterfly model"
               type="image"
               maxHeight="480px"
-              wrapStyle={{ background: 'transparent', overflow: 'hidden' }}
+              wrapStyle={{ height: '480px' }}
+              imgStyle={{ height: '100%', objectFit: 'contain' }}
             />
           </div>
           <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0, background: ACCENT, padding: isMobile ? '36px 24px' : '48px 36px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <SectionLabel text="Design Language" />
+            <SectionLabel text="Modeling" />
             <h2 style={{ fontSize: isMobile ? 36 : 48, fontWeight: 700, color: ACCENT_TEXT, lineHeight: 1.15, margin: 0 }}>
-              Hello!<br />How is your health?
+              Built wing by wing.
             </h2>
           </div>
         </div>
       </motion.section>
 
-      {/* ── 4. DETAIL GRID ────────────────────────────────────────────── */}
-      <motion.section
-        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
-      >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 24 }}>
-            <div>
-              <ZoomableMedia
-                src={p('robot-side.jpg')}
-                alt="Robot side view"
-                type="image"
-                maxHeight="480px"
-                wrapStyle={{ background: 'transparent' }}
-              />
-              <Caption text="Side view" />
-            </div>
-            <div>
-              <ZoomableMedia
-                src={p('robot-detail.jpg')}
-                alt="Robot surface detail"
-                type="image"
-                maxHeight="480px"
-                wrapStyle={{ background: 'transparent' }}
-              />
-              <Caption text="Surface detail" />
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* ── 5. FINAL RENDER ───────────────────────────────────────────── */}
+      {/* ── 4. SCENE ──────────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
         style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <ZoomableMedia
-            src={p('robot-render.jpg')}
-            alt="Robot final render"
+            src={p('butterfly-scene.png')}
+            alt="Butterfly scene"
             type="image"
             maxHeight="480px"
             wrapStyle={{ background: 'transparent' }}
           />
+          <Caption text="Final scene composition" />
           <div style={{ marginTop: 32 }}>
+            <SectionLabel text="Texturing" />
             <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 680 }}>
-              Breathing life into the details that build worlds.<br />
-              Where every small prop tells a massive story.
+              The model captures the asymmetric complexity of butterfly wing geometry. Each vein and texture variation mapped to a photorealistic surface.
             </p>
           </div>
         </div>
       </motion.section>
 
-      {/* ── 6. STAT CARDS ─────────────────────────────────────────────── */}
+      {/* ── 5. ANIMATION ──────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px 140px' : '56px 36px 120px' }}
+        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+      >
+        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <ZoomableMedia
+            src={p('butterfly-anim.mp4')}
+            alt="Butterfly animation"
+            type="video"
+            maxHeight="480px"
+          />
+          <Caption text="Animation cycle" />
+          <div style={{ marginTop: 32 }}>
+            <SectionLabel text="Animation" />
+            <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 680 }}>
+              The rig translates anatomy into motion. A flight cycle that holds up from any angle.
+            </p>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* ── 6. AI GENERATION ─────────────────────────────────────────── */}
+      <motion.section
+        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
+        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+      >
+        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+          <SectionLabel text="AI Generation" />
+          <p style={{ fontSize: 28, color: '#cccccc', maxWidth: 640, lineHeight: 1.7, marginBottom: 32 }}>
+            From 3D model to AI-generated scene. The butterfly render was used as reference to generate a new visual world through AI, pushing the asset beyond its original context.
+          </p>
+          <ZoomableMedia
+            src={p('butterfly-anim-hero.mp4')}
+            alt="AI generated scene"
+            type="video"
+            maxHeight="520px"
+          />
+          <Caption text="AI generated scene" />
+        </div>
+      </motion.section>
+
+      {/* ── 7. STAT CARDS ─────────────────────────────────────────────── */}
+      <motion.section
+        variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
+        style={{ background: CONTENT, padding: isMobile ? '40px 16px 140px' : '56px 36px 120px' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 16 }}>
             {STATS.map(card => (
-              <div key={card.num} style={{ background: CONTENT, padding: 28 }}>
+              <div key={card.num} style={{ background: BG, padding: 28 }}>
                 <p style={{ fontSize: 44, fontWeight: 500, color: ACCENT, margin: '0 0 8px' }}>{card.num}</p>
                 <p style={{ fontSize: 22, color: MUTED, letterSpacing: '0.05em', margin: 0 }}>{card.label}</p>
               </div>
@@ -257,7 +270,7 @@ export default function RobotPage() {
               <span key={tool} style={{ fontSize: 22, letterSpacing: '0.08em', padding: '4px 12px', border: '1px solid rgba(212,168,0,0.4)', color: ACCENT }}>{tool}</span>
             ))}
           </div>
-          <button onClick={() => router.push('/cg')} style={{ background: 'none', border: 'none', padding: 0, color: ACCENT, cursor: 'pointer', fontSize: 26, letterSpacing: '0.04em' }}>
+          <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: 'none', padding: 0, color: ACCENT, cursor: 'pointer', fontSize: 26, letterSpacing: '0.04em' }}>
             ← Back to 3D Artist
           </button>
         </div>

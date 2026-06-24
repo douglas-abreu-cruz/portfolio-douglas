@@ -5,7 +5,7 @@ import { SiteHeader } from '../components/ui/site-header'
 export default function AboutPage() {
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column' }}>
-      <header style={{ padding: '28px 36px 0' }}>
+      <header style={{ padding: '28px 36px 0', backgroundColor: '#ffffff' }}>
         <SiteHeader
           nameColor="#111111"
           bioColor="#6b6560"
