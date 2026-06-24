@@ -32,7 +32,7 @@ export function SiteHeader({ nameColor, bioColor, designerColor, linkColor }: Si
           className="hub-nav-link"
           style={{ color: linkColor }}
         >
-          Contact
+          douglas@douglas-abreu.com
         </a>
       </nav>
     </div>
