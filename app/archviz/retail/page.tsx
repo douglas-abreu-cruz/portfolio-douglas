@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
@@ -64,9 +64,11 @@ export default function RetailPage() {
           >
             ← Archviz
           </button>
-          <div style={{ flex: 1, minWidth: 0 }}>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0 }}>
             <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
           </div>
+          )}
         </div>
       </header>
 
@@ -177,7 +179,7 @@ export default function RetailPage() {
 
       {/* Fixed footer */}
       <footer style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50, background: '#e8e4dc', borderTop: '0.5px solid #6b656022' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '28px 36px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 20 : 0 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '16px' : '28px 36px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 20 : 0 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {TOOLS.map(tool => (
               <span key={tool} style={{ fontSize: 13, letterSpacing: '0.08em', padding: '4px 12px', border: `1px solid ${ACCENT}44`, color: ACCENT }}>{tool}</span>

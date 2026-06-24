@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import type { CSSProperties } from 'react'
 import { motion } from 'framer-motion'
@@ -97,14 +97,16 @@ export default function DsmPage() {
           >
             ← Graphic Design
           </button>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <SiteHeader
-              nameColor="#ffffff"
-              bioColor={MUTED}
-              designerColor={ACCENT}
-              linkColor={MUTED}
-            />
-          </div>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <SiteHeader
+                nameColor="#ffffff"
+                bioColor={MUTED}
+                designerColor={ACCENT}
+                linkColor={MUTED}
+              />
+            </div>
+          )}
         </div>
       </header>
 
@@ -391,7 +393,7 @@ export default function DsmPage() {
       }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '24px 16px' : '28px 36px',
+          padding: isMobile ? '16px' : '28px 36px',
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'space-between',
@@ -401,7 +403,7 @@ export default function DsmPage() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {['Illustrator', 'Photoshop', 'CorelDraw', '3ds Max'].map(tool => (
               <span key={tool} style={{
-                fontSize: 22, letterSpacing: '0.08em',
+                fontSize: isMobile ? 13 : 22, letterSpacing: '0.08em',
                 padding: '4px 12px',
                 border: '1px solid rgba(48,92,222,0.3)',
                 color: BG,
@@ -415,7 +417,7 @@ export default function DsmPage() {
             style={{
               background: 'none', border: 'none', padding: 0,
               color: BG, cursor: 'pointer',
-              fontSize: 26, letterSpacing: '0.04em',
+              fontSize: isMobile ? 14 : 26, letterSpacing: '0.04em',
             }}
           >
             ← Back to Graphic Design

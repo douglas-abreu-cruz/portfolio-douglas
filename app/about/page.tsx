@@ -1,9 +1,11 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useBreakpoint } from '../hooks/use-breakpoint'
 
 export default function AboutPage() {
   const router = useRouter()
+  const { isMobile } = useBreakpoint()
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column' }}>
@@ -31,7 +33,7 @@ export default function AboutPage() {
       <main style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 36px' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
+          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
           width: '100%',
           maxWidth: '1100px',
           minHeight: '520px',
@@ -44,11 +46,11 @@ export default function AboutPage() {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center center',
             backgroundColor: '#ffffff',
-            minHeight: '400px',
+            minHeight: isMobile ? '300px' : '400px',
           }} />
 
           <div style={{
-            padding: '56px 52px',
+            padding: 'clamp(24px, 5vw, 56px) clamp(20px, 4vw, 52px)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',

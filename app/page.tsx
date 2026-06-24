@@ -343,6 +343,26 @@ export default function Home() {
               )
             })}
           </div>
+
+          <div className="mobile-area-nav">
+            {areas.map(area => (
+              <a
+                key={area.key}
+                href={area.href}
+                className="mobile-area-btn"
+              >
+                <div>
+                  <div className="mobile-area-btn-label" style={{ color: area.border }}>
+                    {area.label}
+                  </div>
+                  <div className="mobile-area-btn-desc">
+                    {area.desc}
+                  </div>
+                </div>
+                <span style={{ color: area.border, fontSize: 20 }}>→</span>
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </>

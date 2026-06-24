@@ -110,9 +110,11 @@ export default function TheoraMotoPage() {
           >
             ← 3D Artist
           </button>
-          <div style={{ flex: 1, minWidth: 0 }}>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0 }}>
             <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
           </div>
+          )}
         </div>
       </header>
 
@@ -294,7 +296,7 @@ export default function TheoraMotoPage() {
       }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '24px 16px' : '28px 36px',
+          padding: isMobile ? '16px' : '28px 36px',
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           justifyContent: 'space-between',
@@ -304,7 +306,7 @@ export default function TheoraMotoPage() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {TOOLS.map(tool => (
               <span key={tool} style={{
-                fontSize: 22, letterSpacing: '0.08em',
+                fontSize: isMobile ? 13 : 22, letterSpacing: '0.08em',
                 padding: '4px 12px',
                 border: '1px solid rgba(212,168,0,0.4)',
                 color: ACCENT,
@@ -318,7 +320,7 @@ export default function TheoraMotoPage() {
             style={{
               background: 'none', border: 'none', padding: 0,
               color: ACCENT, cursor: 'pointer',
-              fontSize: 26, letterSpacing: '0.04em',
+              fontSize: isMobile ? 14 : 26, letterSpacing: '0.04em',
             }}
           >
             ← Back to 3D Artist

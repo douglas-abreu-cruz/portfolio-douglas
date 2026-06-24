@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import type { CSSProperties } from 'react'
 import { motion } from 'framer-motion'
@@ -65,9 +65,11 @@ export default function FraternityPage() {
           <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
             ← Graphic Design
           </button>
-          <div style={{ flex: 1, minWidth: 0 }}>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0 }}>
             <SiteHeader nameColor="#ffffff" bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
           </div>
+          )}
         </div>
       </header>
 
@@ -190,15 +192,15 @@ export default function FraternityPage() {
 
       {/* ── 7. FOOTER ─────────────────────────────────────────────────── */}
       <footer style={{ position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50, background: '#fafafa', borderTop: '0.5px solid #e8e8e8' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '24px 16px' : '28px 36px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 20 : 0 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '16px' : '28px 36px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 20 : 0 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {TOOLS.map(tool => (
-              <span key={tool} style={{ fontSize: 22, letterSpacing: '0.08em', padding: '4px 12px', border: '1px solid rgba(48,92,222,0.3)', color: BG }}>
+              <span key={tool} style={{ fontSize: isMobile ? 13 : 22, letterSpacing: '0.08em', padding: '4px 12px', border: '1px solid rgba(48,92,222,0.3)', color: BG }}>
                 {tool}
               </span>
             ))}
           </div>
-          <button onClick={() => router.push('/design')} style={{ background: 'none', border: 'none', padding: 0, color: BG, cursor: 'pointer', fontSize: 26, letterSpacing: '0.04em' }}>
+          <button onClick={() => router.push('/design')} style={{ background: 'none', border: 'none', padding: 0, color: BG, cursor: 'pointer', fontSize: isMobile ? 14 : 26, letterSpacing: '0.04em' }}>
             ← Back to Graphic Design
           </button>
         </div>
