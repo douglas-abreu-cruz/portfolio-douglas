@@ -1,18 +1,32 @@
 'use client'
 
-import { SiteHeader } from '../components/ui/site-header'
+import { useRouter } from 'next/navigation'
 
 export default function AboutPage() {
+  const router = useRouter()
+
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#ffffff', display: 'flex', flexDirection: 'column' }}>
-      <header style={{ padding: '28px 36px 0', backgroundColor: '#ffffff' }}>
-        <SiteHeader
-          nameColor="#111111"
-          bioColor="#6b6560"
-          designerColor="#6b6560"
-          linkColor="#6b6560"
-        />
-      </header>
+
+      {/* Back button */}
+      <div style={{ padding: '28px 36px 0' }}>
+        <button
+          onClick={() => router.back()}
+          style={{
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '13px',
+            fontWeight: 600,
+            letterSpacing: '0.06em',
+            color: '#6b6560',
+            padding: 0,
+            fontFamily: 'inherit',
+          }}
+        >
+          ← Back
+        </button>
+      </div>
 
       <main style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '40px 36px' }}>
         <div style={{
@@ -65,15 +79,31 @@ export default function AboutPage() {
             </div>
 
             <div style={{
-              fontSize: '12px',
-              fontWeight: 600,
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: '#111111',
               paddingTop: '16px',
               borderTop: '0.5px solid #e0e0e0',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
             }}>
-              Based in Toronto · Fueled by craft, AI tools, and good espresso.
+              <p style={{
+                fontSize: '12px',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: '#111111',
+                margin: 0,
+              }}>
+                Based in Toronto · Fueled by craft, AI tools, and good espresso.
+              </p>
+              <p style={{ fontSize: '13px', color: '#6b6560', margin: 0 }}>
+                Let's chat?{' '}
+                <a
+                  href="mailto:douglas@douglas-abreu.com"
+                  style={{ color: '#111111', fontWeight: 600, textDecoration: 'none', borderBottom: '1px solid #11111144' }}
+                >
+                  douglas@douglas-abreu.com
+                </a>
+              </p>
             </div>
           </div>
         </div>
