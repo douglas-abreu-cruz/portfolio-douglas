@@ -40,8 +40,10 @@ export default function AboutPage() {
         }}>
           <div style={{
             backgroundImage: 'url(/images/about-me.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center center',
+            backgroundColor: '#ffffff',
             minHeight: '400px',
           }} />
 
