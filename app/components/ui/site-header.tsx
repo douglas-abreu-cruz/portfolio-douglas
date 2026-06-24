@@ -28,7 +28,7 @@ export function SiteHeader({ nameColor, bioColor, designerColor, linkColor }: Si
           About
         </a>
         <a
-          href="mailto:douglasabreucruz@gmail.com"
+          href="mailto:douglas@douglas-abreu.com"
           className="hub-nav-link"
           style={{ color: linkColor }}
         >
