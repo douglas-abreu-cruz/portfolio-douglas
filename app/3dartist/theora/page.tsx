@@ -133,7 +133,7 @@ export default function TheoraMotoPage() {
             CG / 3D Art — 01
           </p>
           <h1 style={{
-            fontSize: isMobile ? 'clamp(88px, 28vw, 144px)' : 'clamp(88px, 14vw, 192px)',
+            fontSize: isMobile ? 'clamp(36px, 12vw, 64px)' : 'clamp(88px, 14vw, 192px)',
             fontWeight: 700, letterSpacing: '-0.02em',
             lineHeight: 0.95, color: FG, marginBottom: 20,
           }}>

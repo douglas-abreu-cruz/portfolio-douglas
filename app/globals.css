@@ -285,7 +285,8 @@ body {
   }
 
   .hub-name {
-    font-size: 22px;
+    font-size: 20px;
+    white-space: normal;
   }
 
   .hub-bio {
@@ -297,10 +298,7 @@ body {
   }
 
   .site-header-nav {
-    gap: 12px;
-    padding-top: 0;
-    flex-direction: column;
-    align-items: flex-end;
+    display: none;
   }
 
   .gallery-grid {
