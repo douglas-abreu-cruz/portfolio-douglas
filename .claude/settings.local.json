@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Skill(run)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "PowerShell(taskkill *)",
+      "Bash(npm install *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/design)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/cg)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/archviz)",
+      "Bash(curl *)",
+      "Bash(node -e \"const fs=require\\('fs'\\); const p='app/page.tsx'; const c=fs.readFileSync\\(p,'utf8'\\); fs.writeFileSync\\(p,c\\);\")",
+      "PowerShell(Get-Content *)",
+      "PowerShell(Out-Null *)",
+      "PowerShell(curl -s http://localhost:3000/ -o $null -w \"%{http_code}\" 2>&1)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/\" -UseBasicParsing | Select-Object -ExpandProperty StatusCode)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/\" -UseBasicParsing | Select-Object StatusCode; Invoke-WebRequest -Uri \"http://localhost:3000/design\" -UseBasicParsing | Select-Object StatusCode; Invoke-WebRequest -Uri \"http://localhost:3000/cg\" -UseBasicParsing | Select-Object StatusCode; Invoke-WebRequest -Uri \"http://localhost:3000/archviz\" -UseBasicParsing | Select-Object StatusCode)",
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "PowerShell(Get-Process *)",
+      "Bash(npx next *)",
+      "Bash(timeout 30 bash -c 'until curl -sf http://localhost:3001 >/dev/null 2>&1; do sleep 1; done')",
+      "Bash(chromium-cli *)",
+      "Bash(node -e \"require\\('playwright'\\)\")",
+      "PowerShell($css = Invoke-WebRequest -Uri \"http://localhost:3000/_next/static/chunks/%5Broot-of-the-server%5D__0r8dfba._.css\" -UseBasicParsing; $css.Content | Select-String -Pattern \"hub-outer|hub-grid|gallery-grid|flip-card\" | Select-Object -First 20)",
+      "PowerShell($dirs = @\\(\"nutrachamps\",\"vaction\",\"uaipizza\",\"pentel\",\"dsm\",\"fraternity\"\\); foreach \\($d in $dirs\\) { New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\Douglas\\\\Documents\\\\portfolio-douglas\\\\app\\\\design\\\\$d\" | Out-Null }; Write-Output \"Directories created.\")",
+      "Skill(claude-api)",
+      "Bash(npx motion-primitives@latest add text-shimmer)"
+    ]
+  }
+}

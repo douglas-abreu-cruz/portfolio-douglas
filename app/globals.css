@@ -1,0 +1,303 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0d0d0d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ── Hub Layout ──────────────────────────────────────────────────────────── */
+
+.hub-outer {
+  position: relative;
+  z-index: 10;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.hub-inner {
+  width: 100%;
+  max-width: 1440px;
+  padding: 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.hub-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.area-card-cell {
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.project-cell-item {
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Typography ──────────────────────────────────────────────────────────── */
+
+.hub-name {
+  font-size: clamp(32px, 3.8vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hub-bio {
+  font-size: clamp(14px, 1.6vw, 22px);
+  line-height: 1.5;
+  white-space: pre-line;
+  overflow: hidden;
+}
+
+.hub-nav-link {
+  font-size: clamp(13px, 1.3vw, 18px);
+  font-weight: 500;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-size: clamp(16px, 1.6vw, 22px);
+  font-weight: 600;
+  white-space: pre-line;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.card-desc {
+  font-size: clamp(11px, 1.1vw, 15px);
+  white-space: pre-line;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.card-explore {
+  font-size: clamp(10px, 0.9vw, 13px);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+/* ── Site Header ─────────────────────────────────────────────────────────── */
+
+.site-header-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.site-header-nav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Gallery ─────────────────────────────────────────────────────────────── */
+
+.gallery-header {
+  padding: 28px 36px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.gallery-main {
+  flex: 1;
+  padding: 40px 36px 56px;
+  position: relative;
+  z-index: 10;
+}
+
+.gallery-content-wide {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.gallery-title {
+  font-size: clamp(22px, 2.8vw, 38px);
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: -0.01em;
+  margin-bottom: 36px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.flip-card-outer {
+  height: 280px;
+}
+
+.expanded-image-area {
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.expanded-header-padding {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+}
+
+.expanded-info-padding {
+  padding: 28px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Tablet 768–1024px ───────────────────────────────────────────────────── */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hub-inner {
+    padding: 16px 20px;
+    gap: 8px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-header {
+    padding: 20px 24px 0;
+  }
+
+  .gallery-main {
+    padding: 32px 24px 48px;
+  }
+}
+
+/* ── Mobile < 768px ──────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .hub-outer {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .hub-inner {
+    padding: 16px;
+    gap: 12px;
+    height: auto;
+  }
+
+  .hub-grid {
+    flex: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-auto-rows: auto;
+    height: auto;
+  }
+
+  .area-card-cell {
+    grid-column: 1 / -1;
+    height: auto;
+    min-height: 80px;
+    aspect-ratio: 3/1;
+  }
+
+  .project-cell-item {
+    height: auto;
+    min-height: 64px;
+    aspect-ratio: unset;
+  }
+
+  .site-header-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .site-header-nav {
+    padding-top: 0;
+    gap: 20px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-header {
+    padding: 20px 16px 0;
+  }
+
+  .gallery-main {
+    padding: 24px 16px 40px;
+  }
+
+  .gallery-title {
+    margin-bottom: 24px;
+  }
+
+  .flip-card-outer {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .expanded-image-area {
+    height: 240px;
+  }
+
+  .expanded-header-padding {
+    padding: 16px 20px;
+  }
+
+  .expanded-info-padding {
+    padding: 20px 20px 24px;
+  }
+}
