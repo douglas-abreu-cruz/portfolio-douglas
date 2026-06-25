@@ -8,8 +8,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'Douglas Abreu Cruz',
+  title: 'Douglas Abreu',
+  description: 'Multidisciplinary Designer — Graphic Design, 3D Artist, Archviz',
 }
 
 export default function RootLayout({

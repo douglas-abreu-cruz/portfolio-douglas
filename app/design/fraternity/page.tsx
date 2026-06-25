@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { SiteHeader } from '../../components/ui/site-header'
 import { useBreakpoint } from '../../hooks/use-breakpoint'
+import { HeroTitle } from '../../components/ui/hero-title'
 
 const BG     = '#305CDE'
 const ACCENT = '#7a9ff0'
@@ -80,9 +81,9 @@ export default function FraternityPage() {
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             Graphic Design — 06
           </p>
-          <h1 style={{ fontSize: isMobile ? 'clamp(36px, 12vw, 64px)' : 'clamp(88px, 14vw, 192px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: '#ffffff', marginBottom: 20 }}>
+          <HeroTitle style={{ fontSize: isMobile ? 'clamp(36px, 12vw, 64px)' : 'clamp(88px, 14vw, 192px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: '#ffffff', marginBottom: 20 }}>
             Fraternity Without Borders
-          </h1>
+          </HeroTitle>
           <p style={{ fontSize: isMobile ? 32 : 40, color: MUTED, fontWeight: 400 }}>
             Non-profit organization, Canada
           </p>

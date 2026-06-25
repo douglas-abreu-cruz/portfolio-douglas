@@ -22,8 +22,7 @@ export function SiteHeader({ nameColor, bioColor, designerColor, linkColor }: Si
           {' '}with 15+ years of experience{'\n'}across branding, 3D, print, and visual production.
         </p>
       </div>
-
-      <nav className="site-header-nav" style={{ alignSelf: 'flex-end' }}>
+      <nav className="site-header-nav" style={{ alignSelf: 'flex-start', paddingTop: '6px' }}>
         <a href="/about" className="hub-nav-link" style={{ color: linkColor }}>
           About
         </a>

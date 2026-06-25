@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { SiteHeader } from '../../components/ui/site-header'
 import { useBreakpoint } from '../../hooks/use-breakpoint'
+import { HeroTitle } from '../../components/ui/hero-title'
 
 const BG          = '#363737'
 const CONTENT     = '#1a1a1a'
@@ -122,9 +123,9 @@ export default function PropsPage() {
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             Modeling &amp; Texturing — 03
           </p>
-          <h1 style={{ fontSize: isMobile ? 'clamp(36px, 12vw, 64px)' : 'clamp(88px, 14vw, 192px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: FG, marginBottom: 20 }}>
+          <HeroTitle style={{ fontSize: isMobile ? 'clamp(36px, 12vw, 64px)' : 'clamp(88px, 14vw, 192px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: FG, marginBottom: 20 }}>
             3D Props
-          </h1>
+          </HeroTitle>
           <p style={{ fontSize: isMobile ? 32 : 40, color: MUTED, fontWeight: 400 }}>
             Photo-real asset production
           </p>

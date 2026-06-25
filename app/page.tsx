@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 import { SiteHeader } from './components/ui/site-header'
 import { useBreakpoint } from './hooks/use-breakpoint'
+import { PageTransition } from './components/ui/page-transition'
 
 // ── Data ───────────────────────────────────────────────────────────────────
 
@@ -153,6 +155,7 @@ const projectRoutes: Record<string, string[]> = {
 
 export default function Home() {
   const { isMobile } = useBreakpoint()
+  const router = useRouter()
   const [activeArea, setActiveArea] = useState<string | null>(null)
   const [hoveredCell, setHoveredCell] = useState<number | null>(null)
 
@@ -165,7 +168,7 @@ export default function Home() {
   const headerNav      = current ? current.headerNav      : '#6b6560'
 
   return (
-    <>
+    <PageTransition>
       {/* Page background */}
       <motion.div
         animate={{ backgroundColor: pageBg }}
@@ -200,7 +203,7 @@ export default function Home() {
                   key={area.key}
                   className="area-card-cell"
                   onMouseEnter={() => { if (!isMobile) setActiveArea(area.key) }}
-                  onClick={() => { if (!isMobile) window.open(area.href, '_blank') }}
+                  onClick={() => { if (!isMobile) router.push(area.href) }}
                   onTouchStart={() => setActiveArea(area.key)}
                 >
                   <motion.div
@@ -274,8 +277,8 @@ export default function Home() {
                   className="project-cell-item"
                   animate={{ opacity: activeArea ? 0.6 : 0 }}
                   transition={{ duration: 0.4 }}
-                  onClick={() => route && window.open(route, '_blank')}
-                  onTouchEnd={e => { e.preventDefault(); route && window.open(route, '_blank') }}
+                  onClick={() => route && router.push(route)}
+                  onTouchEnd={e => { e.preventDefault(); route && router.push(route) }}
                   onMouseEnter={() => setHoveredCell(i)}
                   onMouseLeave={() => setHoveredCell(null)}
                   style={{
@@ -365,6 +368,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+    </PageTransition>
   )
 }

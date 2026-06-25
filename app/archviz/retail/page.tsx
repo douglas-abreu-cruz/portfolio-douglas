@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { SiteHeader } from '../../components/ui/site-header'
 import { useBreakpoint } from '../../hooks/use-breakpoint'
+import { HeroTitle } from '../../components/ui/hero-title'
 
 const BG          = '#f2f0eb'
 const CONTENT     = '#ffffff'
@@ -81,9 +82,9 @@ export default function RetailPage() {
           <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             Retail &amp; Environmental Design
           </p>
-          <h1 style={{ fontSize: isMobile ? 'clamp(52px, 16vw, 88px)' : 'clamp(64px, 8vw, 130px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: FG, marginBottom: 20 }}>
+          <HeroTitle style={{ fontSize: isMobile ? 'clamp(52px, 16vw, 88px)' : 'clamp(64px, 8vw, 130px)', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 0.95, color: FG, marginBottom: 20 }}>
             Retail<br />Signage
-          </h1>
+          </HeroTitle>
           <p style={{ fontSize: isMobile ? 20 : 28, color: MUTED, fontWeight: 400, lineHeight: 1.5 }}>
             Environmental graphics and wayfinding for a full-scale retail store.
           </p>

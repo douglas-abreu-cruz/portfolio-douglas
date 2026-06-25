@@ -271,14 +271,21 @@ export function ProjectGallery({ pageTitle, projects, theme, directNav = false }
             {openProject === null ? (
               <motion.div
                 key="grid"
-                initial={{ opacity: 0, y: 16 }}
-                animate={gridVariants.enter}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={gridVariants.exit}
                 className="gallery-grid"
               >
                 {projects.map((project, i) => (
-                  <div
+                  <motion.div
                     key={project.num}
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1],
+                      delay: i * 0.08,
+                    }}
                     style={{ height: '280px', position: 'relative' }}
                   >
                     <FlipCard
@@ -308,7 +315,7 @@ export function ProjectGallery({ pageTitle, projects, theme, directNav = false }
                       isMobile={isMobile}
                       directNav={directNav}
                     />
-                  </div>
+                  </motion.div>
                 ))}
               </motion.div>
             ) : (

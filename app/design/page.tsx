@@ -1,6 +1,7 @@
 'use client'
 
 import { ProjectGallery, type Project, type GalleryTheme } from '../components/ui/project-gallery'
+import { PageTransition } from '../components/ui/page-transition'
 
 const PROJECTS: Project[] = [
   {
@@ -81,10 +82,12 @@ const THEME: GalleryTheme = {
 
 export default function DesignPage() {
   return (
-    <ProjectGallery
-      pageTitle="Graphic Design"
-      projects={PROJECTS}
-      theme={THEME}
-    />
+    <PageTransition>
+      <ProjectGallery
+        pageTitle="Graphic Design"
+        projects={PROJECTS}
+        theme={THEME}
+      />
+    </PageTransition>
   )
 }
