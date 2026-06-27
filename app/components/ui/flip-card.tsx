@@ -36,10 +36,10 @@ export function FlipCard({
   thumb,
   onOpen,
   frontBg,
-  frontDuotone1 = '#305CDE',
-  frontDuotone2 = '#1e3fa8',
+  frontDuotone1 = '#6B2D8B',
+  frontDuotone2 = '#4a1d6b',
   frontDuotone2Opacity = 0.4,
-  tabBg = '#1e3fa8',
+  tabBg = '#4a1d6b',
   tabText = '#ffffff',
 }: FlipCardProps) {
   const [hovered, setHovered] = useState(false)

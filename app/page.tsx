@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter, usePathname } from 'next/navigation'
 import { SiteHeader } from './components/ui/site-header'
@@ -41,20 +41,20 @@ const areas: Area[] = [
     href: '/design',
     label: 'Graphic Design',
     desc: 'Branding, packaging,\nadvertising & visual communication',
-    pageBg: '#305CDE',
-    cardBg: '#1e3fa8',
-    border: '#305CDE',
+    pageBg: '#6B2D8B',
+    cardBg: '#4a1d6b',
+    border: '#6B2D8B',
     titleColor: '#ffffff',
-    descColor: '#7a9ff0',
+    descColor: '#c49de0',
     cellBg: '#888888',
     cellText: '#ffffff',
-    cellBorder: '#305CDE22',
+    cellBorder: '#6B2D8B22',
     headerName: '#ffffff',
-    headerBio: '#b0c6f7',
-    headerDesigner: '#7a9ff0',
-    headerNav: '#b0c6f7',
-    duotone1: '#305CDE',
-    duotone2: '#1e3fa8',
+    headerBio: '#e0c8f5',
+    headerDesigner: '#c49de0',
+    headerNav: '#e0c8f5',
+    duotone1: '#6B2D8B',
+    duotone2: '#4a1d6b',
     duotone2Opacity: 0.4,
     projects: [
       { name: 'NutraChamps AI', thumb: '/images/preview/nutrachamps.png' },
@@ -72,21 +72,21 @@ const areas: Area[] = [
     desc: 'Modeling, shading\n& full CG pipeline',
     pageBg: '#363737',
     cardBg: '#1a1a1a',
-    border: '#d4a800',
-    titleColor: '#d4a800',
+    border: '#E86100',
+    titleColor: '#E86100',
     descColor: '#666666',
     cellBg: '#222222',
-    cellText: '#d4a800',
-    cellBorder: '#d4a80022',
+    cellText: '#E86100',
+    cellBorder: '#E8610022',
     headerName: '#ffffff',
     headerBio: '#aaaaaa',
-    headerDesigner: '#d4a800',
+    headerDesigner: '#E86100',
     headerNav: '#aaaaaa',
-    duotone1: '#d4a800',
+    duotone1: '#E86100',
     duotone2: '#a07800',
     duotone2Opacity: 0.35,
     projects: [
-      { name: 'THEORA',          thumb: '/images/preview/theora.png' },
+      { name: 'THEORA Moto-Pod', thumb: '/images/preview/theora.png' },
       { name: 'Butterfly Anim', thumb: '/images/preview/butterfly.png' },
       { name: 'Props Model',    thumb: '/images/preview/props.png' },
       { name: 'Sci-Fi Robot',   thumb: '/images/preview/robot.png' },
@@ -160,6 +160,8 @@ export default function Home() {
   const pathname = usePathname()
   const [activeArea, setActiveArea] = useState<string | null>(null)
   const [hoveredCell, setHoveredCell] = useState<number | null>(null)
+  const touchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const lastTouchAreaRef = useRef<string | null>(null)
 
   const current = activeArea ? areas.find(a => a.key === activeArea) ?? null : null
 
@@ -179,7 +181,7 @@ export default function Home() {
       />
 
       {/* Content — centered, max 1440px on wide screens */}
-      <div className="hub-outer">
+      <div className="hub-outer" style={{ overflowX: 'hidden' }}>
         <div className="hub-inner">
 
           {/* Header */}
@@ -223,8 +225,18 @@ export default function Home() {
                     }
                   }}
                   onTouchStart={() => {
-                    if (activeArea === area.key) router.push(area.href)
-                    else { setActiveArea(area.key); setHoveredCell(null) }
+                    if (lastTouchAreaRef.current === area.key) {
+                      if (touchTimerRef.current) clearTimeout(touchTimerRef.current)
+                      router.push(area.href)
+                      lastTouchAreaRef.current = null
+                    } else {
+                      lastTouchAreaRef.current = area.key
+                      setActiveArea(area.key)
+                      setHoveredCell(null)
+                      touchTimerRef.current = setTimeout(() => {
+                        lastTouchAreaRef.current = null
+                      }, 2000)
+                    }
                   }}
                 >
                   <motion.div
@@ -288,12 +300,12 @@ export default function Home() {
               const thumb = project?.thumb
               const isHovered = hoveredCell === i
               const route = current && projectRoutes[current.key]?.[i]
-              const tabBg = current?.key === 'design' ? '#1e3fa8'
+              const tabBg = current?.key === 'design' ? '#4a1d6b'
                           : current?.key === 'cg' ? '#2a2a2a'
                           : current?.key === 'archviz' ? '#6b6560'
                           : '#333333'
               const tabText = current?.key === 'design' ? '#ffffff'
-                            : current?.key === 'cg' ? '#d4a800'
+                            : current?.key === 'cg' ? '#E86100'
                             : current?.key === 'archviz' ? '#f2f0eb'
                             : '#ffffff'
               return (
@@ -355,8 +367,8 @@ export default function Home() {
                       color: isHovered ? '#ffffff' : tabText,
                       textShadow: isHovered
                         ? (current?.key === 'cg'
-                            ? '0 0 8px #d4a800, 0 0 16px #d4a800aa'
-                            : '0 0 8px #90bde0, 0 0 16px #305CDEaa')
+                            ? '0 0 8px #E86100, 0 0 16px #E86100aa'
+                            : '0 0 8px #90bde0, 0 0 16px #6B2D8Baa')
                         : 'none',
                       transition: 'text-shadow 0.3s ease, color 0.3s ease',
                     }}>

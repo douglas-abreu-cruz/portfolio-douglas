@@ -7,9 +7,9 @@ import { SiteHeader } from '../../components/ui/site-header'
 import { useBreakpoint } from '../../hooks/use-breakpoint'
 import { HeroTitle } from '../../components/ui/hero-title'
 
-const BG     = '#305CDE'
-const ACCENT = '#7a9ff0'
-const MUTED  = '#b0c6f7'
+const BG     = '#6B2D8B'
+const ACCENT = '#c49de0'
+const MUTED  = '#e0c8f5'
 
 const fadeUp = { hidden: { opacity: 0, y: 24 }, visible: { opacity: 1, y: 0 } }
 const VP = { once: true, margin: '-100px' } as const
@@ -63,10 +63,10 @@ export default function UaiPizzaPage() {
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
-            <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+            <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(196,157,224,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
               ← Graphic Design
             </button>
-            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(196,157,224,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
               ← Home
             </button>
           </div>
@@ -200,7 +200,7 @@ export default function UaiPizzaPage() {
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '16px' : '28px 36px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? 20 : 0 }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
             {TOOLS.map(tool => (
-              <span key={tool} style={{ fontSize: isMobile ? 13 : 22, letterSpacing: '0.08em', padding: '4px 12px', border: '1px solid rgba(48,92,222,0.3)', color: BG }}>
+              <span key={tool} style={{ fontSize: isMobile ? 13 : 22, letterSpacing: '0.08em', padding: '4px 12px', border: '1px solid rgba(107,45,139,0.3)', color: BG }}>
                 {tool}
               </span>
             ))}

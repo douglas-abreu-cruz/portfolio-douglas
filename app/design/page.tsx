@@ -61,23 +61,23 @@ const PROJECTS: Project[] = [
 ]
 
 const THEME: GalleryTheme = {
-  pageBg: '#305CDE',
-  cardFrontBg: '#1e3fa8',
+  pageBg: '#6B2D8B',
+  cardFrontBg: '#4a1d6b',
   cardBackBg: '#1a3a96',
   expandedBg: '#142d7a',
   fg: '#ffffff',
-  accent: '#7a9ff0',
+  accent: '#c49de0',
   accentFg: '#ffffff',
-  accentColor: '#305CDE',
-  cardFrontDuotone1: '#305CDE',
-  cardFrontDuotone2: '#1e3fa8',
+  accentColor: '#6B2D8B',
+  cardFrontDuotone1: '#6B2D8B',
+  cardFrontDuotone2: '#4a1d6b',
   cardFrontDuotone2Opacity: 0.4,
-  cardTabBg: '#1e3fa8',
+  cardTabBg: '#4a1d6b',
   cardTabText: '#ffffff',
   headerNameColor: '#ffffff',
-  headerBioColor: '#b0c6f7',
-  headerDesignerColor: '#7a9ff0',
-  headerLinkColor: '#b0c6f7',
+  headerBioColor: '#e0c8f5',
+  headerDesignerColor: '#c49de0',
+  headerLinkColor: '#e0c8f5',
 }
 
 export default function DesignPage() {

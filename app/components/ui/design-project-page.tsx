@@ -27,9 +27,9 @@ const fadeUp = {
 
 const VP = { once: true, margin: '-100px' } as const
 
-const BG        = '#305CDE'
-const ACCENT    = '#7a9ff0'
-const MUTED     = '#b0c6f7'
+const BG        = '#6B2D8B'
+const ACCENT    = '#c49de0'
+const MUTED     = '#e0c8f5'
 const BODY      = '#dce8ff'
 
 export function DesignProjectPage({
@@ -56,7 +56,7 @@ export function DesignProjectPage({
             onClick={() => router.push('/design')}
             style={{
               background: 'none',
-              border: '1px solid rgba(176,198,247,0.3)',
+              border: '1px solid rgba(196,157,224,0.3)',
               color: MUTED, cursor: 'pointer',
               padding: '5px 12px',
               fontSize: 11, letterSpacing: '0.06em',

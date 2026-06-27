@@ -9,7 +9,7 @@ import { HeroTitle } from '../../components/ui/hero-title'
 
 const BG          = '#363737'
 const CONTENT     = '#1a1a1a'
-const ACCENT      = '#d4a800'
+const ACCENT      = '#E86100'
 const ACCENT_TEXT = '#111111'
 const FG          = '#ffffff'
 const MUTED       = '#aaaaaa'
@@ -95,10 +95,10 @@ export default function TheoraMotoPage() {
       }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
-            <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+            <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(232,97,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
               ← 3D Artist
             </button>
-            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(232,97,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
               ← Home
             </button>
           </div>
@@ -132,7 +132,7 @@ export default function TheoraMotoPage() {
             THEORA Moto
           </HeroTitle>
           <p style={{ fontSize: isMobile ? 32 : 40, color: MUTED, fontWeight: 400 }}>
-            Full CG motorcycle model &amp; render pipeline
+            Full CG transforming moto-pod model &amp; render pipeline
           </p>
         </div>
       </motion.section>
@@ -285,7 +285,7 @@ export default function TheoraMotoPage() {
       <footer style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50,
         background: CONTENT,
-        borderTop: '0.5px solid rgba(212,168,0,0.2)',
+        borderTop: '0.5px solid rgba(232,97,0,0.2)',
       }}>
         <div style={{
           maxWidth: 1440, margin: '0 auto',
@@ -301,7 +301,7 @@ export default function TheoraMotoPage() {
               <span key={tool} style={{
                 fontSize: isMobile ? 13 : 22, letterSpacing: '0.08em',
                 padding: '4px 12px',
-                border: '1px solid rgba(212,168,0,0.4)',
+                border: '1px solid rgba(232,97,0,0.4)',
                 color: ACCENT,
               }}>
                 {tool}

@@ -1,5 +1,7 @@
 'use client'
 
+import { useBreakpoint } from '../../hooks/use-breakpoint'
+
 interface SiteHeaderProps {
   nameColor: string
   bioColor: string
@@ -9,6 +11,7 @@ interface SiteHeaderProps {
 
 export function SiteHeader({ nameColor, bioColor, designerColor, linkColor }: SiteHeaderProps) {
   const dColor = designerColor ?? bioColor
+  const { isMobile } = useBreakpoint()
 
   return (
     <div style={{ width: '100%', boxSizing: 'border-box' }}>
@@ -17,10 +20,16 @@ export function SiteHeader({ nameColor, bioColor, designerColor, linkColor }: Si
           <p className="hub-name" style={{ color: nameColor }}>
             Douglas Abreu
           </p>
-          <p className="hub-bio" style={{ color: bioColor }}>
+          <p className="hub-bio" style={{ color: '#F4AB6A' }}>
             Multidisciplinary{' '}
             <strong style={{ color: dColor, transition: 'color 0.5s ease' }}>Designer</strong>
-            {' '}with 15+ years of experience<br />across branding, 3D, print, and visual production.
+            {isMobile ? (
+              <>
+                <br />with 15+ years of experience<br />across branding, 3D, print,<br />and visual production.
+              </>
+            ) : (
+              <> with 15+ years of experience<br />across branding, 3D, print, and visual production.</>
+            )}
           </p>
         </div>
         <nav className="site-header-nav-desktop" style={{

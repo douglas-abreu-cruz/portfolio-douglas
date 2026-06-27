@@ -16,7 +16,7 @@ const ITEMS = [
 ]
 
 const INFINITE_ITEMS = [...ITEMS, ...ITEMS, ...ITEMS]
-const ITEM_HEIGHT = 352
+const ITEM_HEIGHT = 282
 const ITEM_GAP = 8
 const AUTO_SPEED = 0.4
 
@@ -36,6 +36,15 @@ export function GalleryCarousel() {
     x: 0, initialized: false, autoRafId: 0,
     isDragging: false, didDrag: false, startX: 0, lastX: 0, velX: 0,
   })
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth <= 767)
+    const handler = () => setIsMobile(window.innerWidth <= 767)
+    window.addEventListener('resize', handler)
+    return () => window.removeEventListener('resize', handler)
+  }, [])
 
   useEffect(() => {
     const wrap = wrapRef.current
@@ -258,7 +267,7 @@ export function GalleryCarousel() {
         >
           {INFINITE_ITEMS.map((item, i) => {
             const isHovered = i === hoveredIndex
-            const itemHeight = typeof window !== 'undefined' && window.innerWidth <= 767 ? ITEM_HEIGHT / 2 : ITEM_HEIGHT
+            const itemHeight = isMobile ? Math.round(282 * 0.7) : 282
             return (
               <div
                 key={i}
@@ -309,7 +318,7 @@ export function GalleryCarousel() {
         >
           {[...INFINITE_ITEMS].reverse().map((item, i) => {
             const isHovered = i + 100 === hoveredIndex
-            const itemHeight = typeof window !== 'undefined' && window.innerWidth <= 767 ? ITEM_HEIGHT / 2 : ITEM_HEIGHT
+            const itemHeight = isMobile ? Math.round(282 * 0.7) : 282
             return (
               <div
                 key={i}
