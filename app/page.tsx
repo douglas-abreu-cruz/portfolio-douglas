@@ -162,6 +162,7 @@ export default function Home() {
   const [hoveredCell, setHoveredCell] = useState<number | null>(null)
   const touchTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const lastTouchAreaRef = useRef<string | null>(null)
+  const isTouchRef = useRef(false)
 
   const current = activeArea ? areas.find(a => a.key === activeArea) ?? null : null
 
@@ -181,7 +182,7 @@ export default function Home() {
       />
 
       {/* Content — centered, max 1440px on wide screens */}
-      <div className="hub-outer" style={{ overflowX: 'hidden' }}>
+      <div className="hub-outer" style={{ overflowX: 'hidden', width: '100%' }}>
         <div className="hub-inner">
 
           {/* Header */}
@@ -216,15 +217,8 @@ export default function Home() {
                   key={area.key}
                   className="area-card-cell"
                   onMouseEnter={() => { if (!isMobile) setActiveArea(area.key) }}
-                  onClick={() => {
-                    if (isMobile) {
-                      if (activeArea === area.key) router.push(area.href)
-                      else { setActiveArea(area.key); setHoveredCell(null) }
-                    } else {
-                      router.push(area.href)
-                    }
-                  }}
                   onTouchStart={() => {
+                    isTouchRef.current = true
                     if (lastTouchAreaRef.current === area.key) {
                       if (touchTimerRef.current) clearTimeout(touchTimerRef.current)
                       router.push(area.href)
@@ -237,6 +231,13 @@ export default function Home() {
                         lastTouchAreaRef.current = null
                       }, 2000)
                     }
+                  }}
+                  onClick={() => {
+                    if (isTouchRef.current) {
+                      isTouchRef.current = false
+                      return
+                    }
+                    router.push(area.href)
                   }}
                 >
                   <motion.div
