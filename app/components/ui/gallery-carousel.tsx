@@ -87,6 +87,8 @@ export function GalleryCarousel() {
     }
 
     function momentum() {
+      const track = trackRef.current
+      if (!track) return
       if (Math.abs(s.velX) < 0.5) { autoPlay(); return }
       s.velX *= 0.95
       s.x = s.x + s.velX
