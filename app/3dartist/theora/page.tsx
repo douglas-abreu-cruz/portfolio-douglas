@@ -93,28 +93,19 @@ export default function TheoraMotoPage() {
         backgroundColor: BG,
         borderBottom: '1px solid rgba(255,255,255,0.08)',
       }}>
-        <div style={{
-          maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '14px 16px' : '14px 36px',
-          display: 'flex', alignItems: 'center', gap: 20,
-        }}>
-          <button
-            onClick={() => router.push('/3dartist')}
-            style={{
-              background: 'none',
-              border: '1px solid rgba(212,168,0,0.3)',
-              color: MUTED, cursor: 'pointer',
-              padding: '5px 12px',
-              fontSize: 22, letterSpacing: '0.06em',
-              flexShrink: 0, whiteSpace: 'nowrap',
-            }}
-          >
-            ← 3D Artist
-          </button>
-          {!isMobile && (
-            <div style={{ flex: 1, minWidth: 0 }}>
-            <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
+            <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← 3D Artist
+            </button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Home
+            </button>
           </div>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0, paddingLeft: 24, paddingBottom: '0px' }}>
+              <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+            </div>
           )}
         </div>
       </header>
@@ -126,10 +117,10 @@ export default function TheoraMotoPage() {
           background: `linear-gradient(140deg, ${BG} 0%, ${CONTENT} 100%)`,
           minHeight: 480,
           display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-          padding: isMobile ? '48px 16px 36px' : '72px 36px 36px',
+          padding: 0,
         }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px', boxSizing: 'border-box' }}>
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             CG / 3D Art — 01
           </p>
@@ -149,9 +140,9 @@ export default function TheoraMotoPage() {
       {/* Hero image */}
       <motion.div
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '32px 16px' : '48px 36px' }}
+        style={{ background: CONTENT }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px' : '48px 36px', boxSizing: 'border-box' }}>
           <Img
             src={p('theora-hero.png')}
             alt="THEORA Motorcycle hero render"
@@ -164,10 +155,11 @@ export default function TheoraMotoPage() {
       {/* ── 2. WIREFRAME ──────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: CONTENT }}
       >
         <div style={{
           maxWidth: 1440, margin: '0 auto',
+          padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box',
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           gap: isMobile ? 32 : 48,
@@ -208,7 +200,7 @@ export default function TheoraMotoPage() {
           <div style={{
             width: isMobile ? '100%' : '40%', flexShrink: 0,
             background: ACCENT,
-            padding: isMobile ? '36px 24px' : '48px 36px',
+            padding: isMobile ? '36px 16px' : '48px 36px',
             boxSizing: 'border-box',
             display: 'flex', flexDirection: 'column', justifyContent: 'center',
           }}>
@@ -236,9 +228,9 @@ export default function TheoraMotoPage() {
       {/* ── 4. COMPOSITION ────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: CONTENT }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box' }}>
           <Video
             src={p('theora-composition.mp4')}
             autoPlay loop muted
@@ -258,9 +250,9 @@ export default function TheoraMotoPage() {
       {/* ── 5. DEMOREEL ───────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: '#111111', padding: isMobile ? '48px 16px' : '72px 36px' }}
+        style={{ background: '#111111' }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24, padding: isMobile ? '48px 16px' : '72px 36px', boxSizing: 'border-box' }}>
           <SectionLabel text="Demoreel" />
           <Video
             src={p('theora-demoreel.mp4')}
@@ -275,9 +267,9 @@ export default function TheoraMotoPage() {
       {/* ── 6. STAT CARDS ─────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px 140px' : '56px 36px 120px' }}
+        style={{ background: BG }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px 140px' : '56px 36px 120px', boxSizing: 'border-box' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 16 }}>
             {STATS.map(card => (
               <div key={card.num} style={{ background: CONTENT, padding: 28 }}>

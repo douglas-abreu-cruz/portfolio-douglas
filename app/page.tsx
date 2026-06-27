@@ -2,10 +2,11 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { SiteHeader } from './components/ui/site-header'
 import { useBreakpoint } from './hooks/use-breakpoint'
 import { PageTransition } from './components/ui/page-transition'
+import { GalleryCarousel } from './components/ui/gallery-carousel'
 
 // ── Data ───────────────────────────────────────────────────────────────────
 
@@ -156,6 +157,7 @@ const projectRoutes: Record<string, string[]> = {
 export default function Home() {
   const { isMobile } = useBreakpoint()
   const router = useRouter()
+  const pathname = usePathname()
   const [activeArea, setActiveArea] = useState<string | null>(null)
   const [hoveredCell, setHoveredCell] = useState<number | null>(null)
 
@@ -181,7 +183,7 @@ export default function Home() {
         <div className="hub-inner">
 
           {/* Header */}
-          <div style={{ flexShrink: 0 }}>
+          <div style={{ flexShrink: 0, width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
             <SiteHeader
               nameColor={headerName}
               bioColor={headerBio}
@@ -190,12 +192,21 @@ export default function Home() {
             />
           </div>
 
-          {/* 3×3 Grid */}
+          {/* 9-cell grid — Row 1: area cards, Rows 2-3: preview cells */}
           <div
-            className="hub-grid"
-            onMouseLeave={() => setActiveArea(null)}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+              gap: 2,
+              width: '100%',
+              maxWidth: '1200px',
+              margin: '0 auto',
+              boxSizing: 'border-box',
+              overflow: 'hidden',
+            }}
+            onMouseLeave={() => { if (!isMobile) setActiveArea(null) }}
           >
-            {/* Row 1 — Area Cards */}
+            {/* Row 1 — 3 cards */}
             {areas.map(area => {
               const isActive = activeArea === area.key
               return (
@@ -203,8 +214,18 @@ export default function Home() {
                   key={area.key}
                   className="area-card-cell"
                   onMouseEnter={() => { if (!isMobile) setActiveArea(area.key) }}
-                  onClick={() => { if (!isMobile) router.push(area.href) }}
-                  onTouchStart={() => setActiveArea(area.key)}
+                  onClick={() => {
+                    if (isMobile) {
+                      if (activeArea === area.key) router.push(area.href)
+                      else { setActiveArea(area.key); setHoveredCell(null) }
+                    } else {
+                      router.push(area.href)
+                    }
+                  }}
+                  onTouchStart={() => {
+                    if (activeArea === area.key) router.push(area.href)
+                    else { setActiveArea(area.key); setHoveredCell(null) }
+                  }}
                 >
                   <motion.div
                     animate={{
@@ -219,9 +240,9 @@ export default function Home() {
                       padding: '16px 18px',
                       display: 'flex',
                       flexDirection: 'column',
-                      justifyContent: 'flex-end',
-                      alignItems: 'flex-start',
-                      textAlign: 'left',
+                      justifyContent: isMobile ? 'center' : 'flex-end',
+                      alignItems: isMobile ? 'center' : 'flex-start',
+                      textAlign: isMobile ? 'center' : 'left',
                       gap: 5,
                       boxSizing: 'border-box',
                       position: 'relative',
@@ -231,32 +252,36 @@ export default function Home() {
                       className="card-title"
                       animate={{ color: isActive ? area.titleColor : '#111111' }}
                       transition={{ duration: 0.4 }}
-                      style={{ position: 'relative', zIndex: 2 }}
+                      style={{ position: 'relative', zIndex: 2, textAlign: isMobile ? 'center' : 'left' }}
                     >
                       {area.label}
                     </motion.h2>
-                    <motion.p
-                      className="card-desc"
-                      animate={{ color: isActive ? area.descColor : '#a8a398' }}
-                      transition={{ duration: 0.4 }}
-                      style={{ whiteSpace: 'pre-line', position: 'relative', zIndex: 2 }}
-                    >
-                      {area.desc}
-                    </motion.p>
-                    <motion.p
-                      className="card-explore"
-                      animate={{ color: isActive ? area.border : '#c8c4bc' }}
-                      transition={{ duration: 0.4 }}
-                      style={{ position: 'relative', zIndex: 2 }}
-                    >
-                      Explore →
-                    </motion.p>
+                    {!isMobile && (
+                      <>
+                        <motion.p
+                          className="card-desc"
+                          animate={{ color: isActive ? area.descColor : '#a8a398' }}
+                          transition={{ duration: 0.4 }}
+                          style={{ whiteSpace: 'pre-line', position: 'relative', zIndex: 2 }}
+                        >
+                          {area.desc}
+                        </motion.p>
+                        <motion.p
+                          className="card-explore"
+                          animate={{ color: isActive ? area.border : '#c8c4bc' }}
+                          transition={{ duration: 0.4 }}
+                          style={{ position: 'relative', zIndex: 2 }}
+                        >
+                          Explore →
+                        </motion.p>
+                      </>
+                    )}
                   </motion.div>
                 </div>
               )
             })}
 
-            {/* Rows 2–3 — Project Cells */}
+            {/* Rows 2-3 — 6 preview cells */}
             {Array.from({ length: 6 }).map((_, i) => {
               const project = current?.projects[i]
               const projectName = project?.name ?? ''
@@ -275,10 +300,13 @@ export default function Home() {
                 <motion.div
                   key={`cell-${i}`}
                   className="project-cell-item"
-                  animate={{ opacity: activeArea ? 0.6 : 0 }}
+                  animate={{
+                    opacity: activeArea ? 0.6 : 0,
+                    height: activeArea ? 'auto' : 0,
+                  }}
                   transition={{ duration: 0.4 }}
                   onClick={() => route && router.push(route)}
-                  onTouchEnd={e => { e.preventDefault(); route && router.push(route) }}
+                  onTouchEnd={e => { e.preventDefault(); if (current) router.push(current.href) }}
                   onMouseEnter={() => setHoveredCell(i)}
                   onMouseLeave={() => setHoveredCell(null)}
                   style={{
@@ -288,10 +316,9 @@ export default function Home() {
                     backgroundPosition: 'center',
                     border: current ? `1px solid ${current.cellBorder}` : '1px solid transparent',
                     cursor: 'crosshair',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
                     position: 'relative',
+                    overflow: 'hidden',
+                    minHeight: activeArea ? undefined : 0,
                   }}
                 >
                   {thumb && (
@@ -315,19 +342,13 @@ export default function Home() {
                     </>
                   )}
                   <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    zIndex: 4,
-                    display: 'inline-flex',
-                    alignItems: 'center',
+                    position: 'absolute', top: 0, right: 0, zIndex: 4,
+                    display: 'inline-flex', alignItems: 'center',
                     padding: '5px 12px 7px',
-                    borderRadius: 0,
                     backgroundColor: tabBg,
                   }}>
                     <span style={{
-                      fontSize: 11,
-                      fontWeight: 600,
+                      fontSize: 11, fontWeight: 600,
                       letterSpacing: '0.06em',
                       textTransform: 'uppercase',
                       whiteSpace: 'nowrap',
@@ -346,6 +367,23 @@ export default function Home() {
               )
             })}
           </div>
+
+          {/* Carousel — some quando activeArea no desktop, desce no mobile */}
+          <div
+            className="gallery-carousel"
+            style={{
+              width: '100vw',
+              marginLeft: 'calc(-50vw + 50%)',
+              opacity: !isMobile && activeArea ? 0 : 1,
+              height: !isMobile && activeArea ? 0 : 'auto',
+              overflow: 'hidden',
+              transition: 'opacity 0.4s ease',
+              pointerEvents: !isMobile && activeArea ? 'none' : 'auto',
+            }}
+          >
+            <GalleryCarousel />
+          </div>
+
 
           <div className="mobile-area-nav">
             {areas.map(area => (
@@ -368,6 +406,30 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {activeArea && pathname === '/' && (
+        <button
+          onClick={() => { setActiveArea(null); setHoveredCell(null); }}
+          style={{
+            position: 'fixed',
+            top: 16,
+            right: 28,
+            zIndex: 100,
+            background: 'none',
+            border: `1px solid ${headerNav}44`,
+            padding: '5px 12px',
+            cursor: 'pointer',
+            color: headerNav,
+            fontSize: 13,
+            fontWeight: 600,
+            letterSpacing: '0.06em',
+            fontFamily: 'inherit',
+            borderRadius: 0,
+          }}
+        >
+          ← Home
+        </button>
+      )}
     </PageTransition>
   )
 }

@@ -58,17 +58,19 @@ export default function AtticPage() {
 
       {/* Sticky header */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: `1px solid ${ACCENT}22` }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button
-            onClick={() => router.push('/archviz')}
-            style={{ background: 'none', border: `1px solid ${ACCENT}44`, color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}
-          >
-            ← Archviz
-          </button>
-          {!isMobile && (
-            <div style={{ flex: 1, minWidth: 0 }}>
-            <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
+            <button onClick={() => router.push('/archviz')} style={{ background: 'none', border: `1px solid ${ACCENT}44`, color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Archviz
+            </button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: `1px solid ${ACCENT}44`, color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Home
+            </button>
           </div>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0, paddingLeft: 24, paddingBottom: '0px' }}>
+              <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+            </div>
           )}
         </div>
       </header>
@@ -76,9 +78,9 @@ export default function AtticPage() {
       {/* 1. HERO */}
       <motion.section
         initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}
-        style={{ background: `linear-gradient(140deg, ${BG} 0%, ${CONTENT} 100%)`, minHeight: 480, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px' }}
+        style={{ background: `linear-gradient(140deg, ${BG} 0%, ${CONTENT} 100%)`, minHeight: 480, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 0 }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px', boxSizing: 'border-box' }}>
           <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             Residential Visualization
           </p>
@@ -93,18 +95,18 @@ export default function AtticPage() {
 
       {/* Hero image */}
       <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '32px 16px' : '48px 36px' }}
+        style={{ background: CONTENT }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px' : '48px 36px', boxSizing: 'border-box' }}>
           <Img src={p('hero.png')} alt="Attic loft bat cave visualization" maxHeight={isMobile ? '280px' : '70vh'} />
         </div>
       </motion.div>
 
       {/* 2. BRIEF */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: BG }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 32 : 64, alignItems: 'flex-start' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 32 : 64, alignItems: 'flex-start' }}>
           <div style={{ width: isMobile ? '100%' : '45%', flexShrink: 0 }}>
             <SectionLabel text="Project" />
             <p style={{ fontSize: isMobile ? 17 : 20, lineHeight: 1.85, color: MUTED }}>
@@ -119,9 +121,9 @@ export default function AtticPage() {
 
       {/* 3. CHALLENGE */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: CONTENT }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 24 }}>
             <Img src={p('variant-teal.png')} alt="Attic loft teal variant" maxHeight={isMobile ? '280px' : '480px'} />
             <Img src={p('variant-blue.png')} alt="Attic loft blue variant" maxHeight={isMobile ? '280px' : '480px'} />
@@ -135,7 +137,7 @@ export default function AtticPage() {
         style={{ background: BG, padding: isMobile ? '40px 0' : '64px 0', overflow: 'hidden' }}
       >
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : '0', display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: 'stretch' }}>
-          <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0, background: ACCENT, padding: isMobile ? '36px 24px' : '56px 48px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0, background: ACCENT, padding: isMobile ? '36px 16px' : '56px 36px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <p style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.14em', textTransform: 'uppercase', color: ACCENT_TEXT, opacity: 0.65, marginBottom: 20 }}>Concept</p>
             <h2 style={{ fontSize: isMobile ? 32 : 44, fontWeight: 700, color: ACCENT_TEXT, lineHeight: 1.2, margin: 0 }}>
               3 colorways.<br />One geometry.<br />Infinite personality.
@@ -149,9 +151,9 @@ export default function AtticPage() {
 
       {/* 5. DETAIL GRID */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: CONTENT }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box' }}>
           <SectionLabel text="All Variants" />
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 24 }}>
             <Img src={p('hero.png')} alt="Attic hero" maxHeight={isMobile ? '280px' : '480px'} />
@@ -164,9 +166,9 @@ export default function AtticPage() {
 
       {/* 6. STATS */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px 140px' : '56px 36px 120px' }}
+        style={{ background: BG, padding: isMobile ? '40px 0 140px' : '56px 0 120px' }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px' : '0 36px', boxSizing: 'border-box' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 16 }}>
             {STATS.map(card => (
               <div key={card.label} style={{ background: CONTENT, padding: 28 }}>

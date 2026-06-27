@@ -102,14 +102,19 @@ export default function RobotPage() {
 
       {/* ── Sticky header ─────────────────────────────────────────────── */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
-            ← 3D Artist
-          </button>
-          {!isMobile && (
-            <div style={{ flex: 1, minWidth: 0 }}>
-            <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
+            <button onClick={() => router.push('/3dartist')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← 3D Artist
+            </button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(212,168,0,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Home
+            </button>
           </div>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0, paddingLeft: 24, paddingBottom: '0px' }}>
+              <SiteHeader nameColor={FG} bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+            </div>
           )}
         </div>
       </header>
@@ -117,9 +122,9 @@ export default function RobotPage() {
       {/* ── 1. HERO ───────────────────────────────────────────────────── */}
       <motion.section
         initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}
-        style={{ background: `linear-gradient(140deg, ${BG} 0%, ${CONTENT} 100%)`, minHeight: 480, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px' }}
+        style={{ background: `linear-gradient(140deg, ${BG} 0%, ${CONTENT} 100%)`, minHeight: 480, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 0 }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px', boxSizing: 'border-box' }}>
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             Hard Surface — 04
           </p>
@@ -149,9 +154,9 @@ export default function RobotPage() {
       {/* ── 2. BRIEF ──────────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: BG }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box' }}>
           <p style={{ fontSize: 28, lineHeight: 1.8, color: MUTED, maxWidth: 720 }}>
             A sci-fi medical kiosk designed as a fully autonomous robot asset. Hard surface modeling pushed to production quality. Clean panel lines, functional design logic and a surface finish that reads as manufactured, not modeled.
           </p>
@@ -173,7 +178,7 @@ export default function RobotPage() {
               wrapStyle={{ background: 'transparent', overflow: 'hidden' }}
             />
           </div>
-          <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0, background: ACCENT, padding: isMobile ? '36px 24px' : '48px 36px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0, background: ACCENT, padding: isMobile ? '36px 16px' : '48px 36px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <SectionLabel text="Design Language" />
             <h2 style={{ fontSize: isMobile ? 36 : 48, fontWeight: 700, color: ACCENT_TEXT, lineHeight: 1.15, margin: 0 }}>
               Hello!<br />How is your health?
@@ -185,9 +190,9 @@ export default function RobotPage() {
       {/* ── 4. DETAIL GRID ────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: BG }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 16 : 24 }}>
             <div>
               <ZoomableMedia
@@ -216,9 +221,9 @@ export default function RobotPage() {
       {/* ── 5. FINAL RENDER ───────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: CONTENT, padding: isMobile ? '40px 16px' : '64px 36px' }}
+        style={{ background: CONTENT }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px', boxSizing: 'border-box' }}>
           <ZoomableMedia
             src={p('robot-render.jpg')}
             alt="Robot final render"
@@ -238,9 +243,9 @@ export default function RobotPage() {
       {/* ── 6. STAT CARDS ─────────────────────────────────────────────── */}
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={{ background: BG, padding: isMobile ? '40px 16px 140px' : '56px 36px 120px' }}
+        style={{ background: BG }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px 140px' : '56px 36px 120px', boxSizing: 'border-box' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 16 }}>
             {STATS.map(card => (
               <div key={card.num} style={{ background: CONTENT, padding: 28 }}>

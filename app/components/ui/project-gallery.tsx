@@ -263,9 +263,33 @@ export function ProjectGallery({ pageTitle, projects, theme, directNav = false }
 
       <main className="gallery-main">
         <div className="gallery-content-wide">
-          <h1 className="gallery-title" style={{ color: theme.fg }}>
-            {pageTitle}
-          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 36 }}>
+            <button
+              onClick={() => router.push('/')}
+              style={{
+                background: 'none',
+                border: `1px solid ${theme.fg}44`,
+                color: theme.fg,
+                cursor: 'pointer',
+                padding: '5px 12px',
+                fontSize: 13,
+                letterSpacing: '0.06em',
+                whiteSpace: 'nowrap',
+                borderRadius: 0,
+                fontFamily: 'inherit',
+                fontWeight: 600,
+                flexShrink: 0,
+              }}
+            >
+              ← Home
+            </button>
+            <h1
+              className="gallery-title"
+              style={{ color: theme.fg, marginBottom: 0 }}
+            >
+              {pageTitle}
+            </h1>
+          </div>
 
           <AnimatePresence mode="wait">
             {openProject === null ? (

@@ -1,6 +1,6 @@
-﻿'use client'
+'use client'
 
-import type { CSSProperties } from 'react'
+import { useEffect, type CSSProperties } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { SiteHeader } from '../../components/ui/site-header'
@@ -48,36 +48,141 @@ const STATS = [
 
 const TOOLS = ['Photoshop', 'AI Tools', 'Canva']
 
+const FEED_IMAGES = [
+  { src: p('design-nutrachamps-concept.png'), likes: '9,311', caption: 'Power your performance. Strength. Energy. Every Day. 💪 #NutraChamps #Creatine' },
+  { src: p('design-nutrachamps-concept-2.png'), likes: '7,842', caption: 'Maximize Intensity — Raspberry flavor now available 🍇 #Fitness #Creatine' },
+  { src: p('design-nutrachamps-concept-3.png'), likes: '6,519', caption: 'Daily Power. Strength Support. Maximize Intensity 💜 #NutraChamps' },
+  { src: p('design-nutrachamps-hero.png'), likes: '8,103', caption: 'Blackberry Creatine Gummies. Amazon #1 bestseller 🛒 #Performance' },
+  { src: p('design-nutrachamps-product.png'), likes: '5,274', caption: 'Green Apple flavor — Delicious. Effective. Every Day. 🍏 #NutraChamps' },
+]
+
+function InstagramFeed() {
+  return (
+    <div style={{ position: 'relative', width: 260, margin: '0 auto' }}>
+      <div style={{
+        background: '#1a1a1a',
+        borderRadius: 44,
+        padding: 12,
+        border: '1px solid #333',
+      }}>
+        <div style={{ background: '#000', borderRadius: 34, overflow: 'hidden' }}>
+
+          {/* Status bar */}
+          <div style={{ background: '#000', padding: '10px 20px 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <span style={{ color: '#fff', fontSize: 11, fontWeight: 600, fontFamily: '-apple-system,sans-serif' }}>9:41</span>
+            <div style={{ width: 88, height: 26, background: '#000', borderRadius: 20, border: '2px solid #1a1a1a' }} />
+            <span style={{ color: '#fff', fontSize: 10, fontFamily: '-apple-system,sans-serif' }}>●●●</span>
+          </div>
+
+          {/* IG Header */}
+          <div style={{ background: '#000', padding: '8px 12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '0.5px solid #222' }}>
+            <span style={{ color: '#fff', fontSize: 13, fontWeight: 700, fontFamily: '-apple-system,sans-serif' }}>nutrachamps ▾</span>
+            <div style={{ display: 'flex', gap: 14, color: '#fff', fontSize: 18 }}>＋ ☰</div>
+          </div>
+
+          {/* Profile */}
+          <div style={{ background: '#000', padding: '10px 12px 6px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+              <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)', padding: 2, flexShrink: 0 }}>
+                <div style={{ width: '100%', height: '100%', borderRadius: '50%', background: '#305CDE', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 13, fontWeight: 700, fontFamily: '-apple-system,sans-serif', border: '2px solid #000' }}>NC</div>
+              </div>
+              <div style={{ display: 'flex', gap: 12 }}>
+                {[['24','posts'],['12.4k','followers'],['186','following']].map(([n,l]) => (
+                  <div key={l} style={{ textAlign: 'center' }}>
+                    <div style={{ color: '#fff', fontSize: 11, fontWeight: 700, fontFamily: '-apple-system,sans-serif' }}>{n}</div>
+                    <div style={{ color: '#888', fontSize: 9, fontFamily: '-apple-system,sans-serif' }}>{l}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ color: '#fff', fontSize: 10, fontWeight: 600, fontFamily: '-apple-system,sans-serif', marginBottom: 2 }}>NutraChamps®</div>
+            <div style={{ color: '#aaa', fontSize: 9, fontFamily: '-apple-system,sans-serif', lineHeight: 1.4, marginBottom: 8 }}>Fuel your performance 💪{'\n'}Creatine Gummies · Amazon #1</div>
+            <div style={{ display: 'flex', gap: 6, marginBottom: 8 }}>
+              {['Follow','Message'].map(t => (
+                <button key={t} style={{ flex: 1, background: '#222', border: 'none', borderRadius: 6, color: '#fff', fontSize: 9, fontWeight: 600, padding: '4px 0', fontFamily: '-apple-system,sans-serif' }}>{t}</button>
+              ))}
+            </div>
+          </div>
+
+          {/* Feed scroll area */}
+          <div style={{ height: 280, overflow: 'hidden', position: 'relative' }}>
+            <div id="nc-feed-track" style={{ display: 'flex', flexDirection: 'column' }}>
+              {[...FEED_IMAGES, ...FEED_IMAGES].map((img, i) => (
+                <div key={i} style={{ flexShrink: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 10px', background: '#000' }}>
+                    <div style={{ width: 22, height: 22, borderRadius: '50%', background: '#305CDE', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: 7, fontWeight: 700, fontFamily: '-apple-system,sans-serif' }}>NC</div>
+                    <span style={{ color: '#fff', fontSize: 9, fontWeight: 600, fontFamily: '-apple-system,sans-serif' }}>nutrachamps</span>
+                    <span style={{ color: '#fff', fontSize: 14, marginLeft: 'auto' }}>···</span>
+                  </div>
+                  <img src={img.src} alt="" style={{ width: '100%', aspectRatio: '1', objectFit: 'cover', display: 'block' }} />
+                  <div style={{ background: '#000', padding: '6px 10px 2px', display: 'flex', gap: 10, fontSize: 16, color: '#fff' }}>♡ ○ ✈ <span style={{ marginLeft: 'auto' }}>⊡</span></div>
+                  <div style={{ background: '#000', padding: '0 10px 2px', color: '#fff', fontSize: 9, fontWeight: 600, fontFamily: '-apple-system,sans-serif' }}>{img.likes} likes</div>
+                  <div style={{ background: '#000', padding: '0 10px 8px', color: '#aaa', fontSize: 9, fontFamily: '-apple-system,sans-serif', lineHeight: 1.4 }}><span style={{ color: '#fff', fontWeight: 600 }}>nutrachamps</span> {img.caption}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom nav */}
+          <div style={{ background: '#000', borderTop: '0.5px solid #222', padding: '8px 20px 14px', display: 'flex', justifyContent: 'space-between', fontSize: 20, color: '#fff' }}>
+            ⌂ ⊕ △ ▷ ●
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function NutraChampsPage() {
   const router = useRouter()
   const { isMobile } = useBreakpoint()
   const sec = (extra?: CSSProperties): CSSProperties => ({
     background: '#ffffff',
-    padding: isMobile ? '40px 16px' : '64px 36px',
     ...extra,
   })
+
+  useEffect(() => {
+    const track = document.getElementById('nc-feed-track')
+    if (!track) return
+    let pos = 0
+    let rafId: number
+    function animate() {
+      pos += 0.5
+      const totalH = track!.scrollHeight / 2
+      if (pos >= totalH) pos = 0
+      track!.style.transform = `translateY(-${pos}px)`
+      rafId = requestAnimationFrame(animate)
+    }
+    rafId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafId)
+  }, [])
 
   return (
     <div style={{ backgroundColor: BG, minHeight: '100vh', paddingBottom: isMobile ? '160px' : '140px' }}>
 
       {/* ── Sticky header ─────────────────────────────────────────────── */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
-            ← Graphic Design
-          </button>
-          {!isMobile && (
-            <div style={{ flex: 1, minWidth: 0 }}>
-            <SiteHeader nameColor="#ffffff" bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
+            <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Graphic Design
+            </button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Home
+            </button>
           </div>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0, paddingLeft: 24, paddingBottom: '0px' }}>
+              <SiteHeader nameColor="#ffffff" bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+            </div>
           )}
         </div>
       </header>
 
       {/* ── 1. HERO ───────────────────────────────────────────────────── */}
       <motion.section initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}
-        style={{ background: `linear-gradient(140deg, ${BG} 0%, #1e3fa8 100%)`, minHeight: 320, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
+        style={{ background: `linear-gradient(140deg, ${BG} 0%, #1e3fa8 100%)`, minHeight: 320, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 0 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px', boxSizing: 'border-box' }}>
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             AI Advertising — 01
           </p>
@@ -93,15 +198,15 @@ export default function NutraChampsPage() {
       {/* ── 2. THE BRIEF ──────────────────────────────────────────────── */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
         style={{ background: '#ffffff', overflow: 'visible' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px 40px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 32 : 0, alignItems: 'flex-start', overflow: 'visible' }}>
-          <div style={{ width: isMobile ? '100%' : '60%', flexShrink: 0, paddingRight: isMobile ? 0 : 56, boxSizing: 'border-box' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '40px 16px' : '64px 36px 40px', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 32 : 48, alignItems: 'center' }}>
+          <div style={{ width: isMobile ? '100%' : '40%', flexShrink: 0 }}>
+            <InstagramFeed />
+          </div>
+          <div style={{ flex: 1 }}>
             <p style={EYEBROW}>The brief</p>
             <p style={{ fontSize: 28, lineHeight: 1.8, color: '#444', maxWidth: 520 }}>
               An AI-driven advertising concept for NutraChamps Creatine Gummies, optimized for Amazon and Instagram. AI image generation combined with traditional art direction to produce a visual strong on product focus.
             </p>
-          </div>
-          <div style={{ width: isMobile ? '100%' : '40%', marginTop: isMobile ? 0 : -100, position: 'relative', zIndex: 2 }}>
-            <Img src={p('design-nutrachamps-hero.png')} alt="NutraChamps" maxHeight="60vh" imgStyle={{ boxShadow: '0 16px 48px rgba(0,0,0,0.2)' }} />
           </div>
         </div>
       </motion.section>
@@ -110,8 +215,8 @@ export default function NutraChampsPage() {
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
         style={{ background: '#ffffff' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '0 16px 40px' : '0 36px 64px', display: 'flex', flexDirection: 'column', gap: 32 }}>
-          <Img src={p('design-nutrachamps-concept.png')} alt="Concept mapping" maxHeight="480px" wrapStyle={{ height: '480px', width: '100%' }} imgStyle={{ height: '100%' }} />
-          <Img src={p('design-nutrachamps-instagram.png')} alt="Instagram format" maxHeight="480px" wrapStyle={{ height: '480px', width: '100%' }} imgStyle={{ height: '100%' }} />
+          <Img src={p('design-nutrachamps-concept-2.png')} alt="Raspberry campaign" maxHeight="600px" wrapStyle={{ width: '100%', overflow: 'hidden' }} imgStyle={{ width: '100%', height: 'auto', maxHeight: '600px', objectFit: 'contain', boxShadow: 'none' }} />
+          <Img src={p('design-nutrachamps-concept-3.png')} alt="Grape campaign" maxHeight="600px" wrapStyle={{ width: '100%', overflow: 'hidden' }} imgStyle={{ width: '100%', height: 'auto', maxHeight: '600px', objectFit: 'contain', boxShadow: 'none' }} />
         </div>
       </motion.section>
 
@@ -141,7 +246,7 @@ export default function NutraChampsPage() {
                 </p>
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <Img src={p('design-nutrachamps-hero.png')} alt="NutraChamps" maxHeight="480px" wrapStyle={{ height: '480px' }} imgStyle={{ height: '100%', boxShadow: '0 10px 36px rgba(0,0,0,0.22)' }} />
+                <Img src={p('design-nutrachamps-hero.png')} alt="NutraChamps" maxHeight="480px" wrapStyle={{ height: '480px' }} imgStyle={{ height: '100%' }} />
               </div>
             </div>
           )}
@@ -150,8 +255,8 @@ export default function NutraChampsPage() {
 
       {/* ── 5. STAT CARDS ─────────────────────────────────────────────── */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={sec({ padding: isMobile ? '32px 16px' : '48px 36px' })}>
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        style={sec()}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px' : '48px 36px', boxSizing: 'border-box' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 16 }}>
             {STATS.map(card => (
               <div key={card.num} style={{ background: '#f0f0ee', padding: 24 }}>
@@ -159,34 +264,6 @@ export default function NutraChampsPage() {
                 <p style={{ fontSize: 22, color: '#888', letterSpacing: '0.05em', margin: 0 }}>{card.label}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* ── 6. TECHNICAL DETAIL ───────────────────────────────────────── */}
-      <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={sec({ padding: isMobile ? '32px 16px 160px' : '48px 36px 140px' })}>
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
-          <p style={EYEBROW}>Technical detail</p>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 24 : 32, marginBottom: isMobile ? 24 : 32 }}>
-            <div>
-              <Img src={p('design-nutrachamps-amazon.png')} alt="Amazon version" maxHeight="480px" wrapStyle={{ height: '480px' }} imgStyle={{ height: '100%' }} />
-              <Caption text="Amazon version" />
-            </div>
-            <div>
-              <Img src={p('design-nutrachamps-hero.png')} alt="Final layout" maxHeight="480px" wrapStyle={{ height: '480px' }} imgStyle={{ height: '100%' }} />
-              <Caption text="Final layout" />
-            </div>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 24 : 32 }}>
-            <div>
-              <Img src={p('design-nutrachamps-concept.png')} alt="Concept mapping" maxHeight="480px" wrapStyle={{ height: '480px' }} imgStyle={{ height: '100%' }} />
-              <Caption text="Concept mapping" />
-            </div>
-            <div>
-              <Img src={p('design-nutrachamps-instagram.png')} alt="Instagram format" maxHeight="480px" wrapStyle={{ height: '480px' }} imgStyle={{ height: '100%' }} />
-              <Caption text="Instagram format" />
-            </div>
           </div>
         </div>
       </motion.section>

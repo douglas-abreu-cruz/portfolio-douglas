@@ -53,7 +53,6 @@ export default function FraternityPage() {
   const { isMobile } = useBreakpoint()
   const sec = (extra?: CSSProperties): CSSProperties => ({
     background: '#ffffff',
-    padding: isMobile ? '40px 16px' : '64px 36px',
     ...extra,
   })
 
@@ -62,22 +61,27 @@ export default function FraternityPage() {
 
       {/* ── Sticky header ─────────────────────────────────────────────── */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: BG, borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'center', gap: 20 }}>
-          <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 22, letterSpacing: '0.06em', flexShrink: 0, whiteSpace: 'nowrap' }}>
-            ← Graphic Design
-          </button>
-          {!isMobile && (
-            <div style={{ flex: 1, minWidth: 0 }}>
-            <SiteHeader nameColor="#ffffff" bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
+            <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Graphic Design
+            </button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Home
+            </button>
           </div>
+          {!isMobile && (
+            <div style={{ flex: 1, minWidth: 0, paddingLeft: 24, paddingBottom: '0px' }}>
+              <SiteHeader nameColor="#ffffff" bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
+            </div>
           )}
         </div>
       </header>
 
       {/* ── 1. HERO ───────────────────────────────────────────────────── */}
       <motion.section initial="hidden" animate="visible" variants={fadeUp} transition={{ duration: 0.7 }}
-        style={{ background: `linear-gradient(140deg, ${BG} 0%, #1e3fa8 100%)`, minHeight: 320, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px' }}>
-        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
+        style={{ background: `linear-gradient(140deg, ${BG} 0%, #1e3fa8 100%)`, minHeight: 320, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 0 }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px', boxSizing: 'border-box' }}>
           <p style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: ACCENT, marginBottom: 16 }}>
             Graphic Design — 06
           </p>
@@ -150,8 +154,8 @@ export default function FraternityPage() {
 
       {/* ── 5. STAT CARDS ─────────────────────────────────────────────── */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={sec({ padding: isMobile ? '32px 16px' : '48px 36px' })}>
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        style={sec()}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px' : '48px 36px', boxSizing: 'border-box' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 16 }}>
             {STATS.map(card => (
               <div key={card.num} style={{ background: '#f0f0ee', padding: 24 }}>
@@ -165,8 +169,8 @@ export default function FraternityPage() {
 
       {/* ── 6. TECHNICAL DETAIL ───────────────────────────────────────── */}
       <motion.section variants={fadeUp} initial="hidden" whileInView="visible" viewport={VP} transition={FV}
-        style={sec({ padding: isMobile ? '32px 16px 160px' : '48px 36px 140px' })}>
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        style={sec()}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 160px' : '48px 36px 140px', boxSizing: 'border-box' }}>
           <p style={EYEBROW}>Technical detail</p>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 24 : 32, marginBottom: isMobile ? 24 : 32 }}>
             <div>

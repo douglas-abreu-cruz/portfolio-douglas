@@ -67,7 +67,6 @@ export default function DsmPage() {
   const { isMobile } = useBreakpoint()
   const sec = (extra?: CSSProperties): CSSProperties => ({
     background: '#ffffff',
-    padding: isMobile ? '40px 16px' : '64px 36px',
     ...extra,
   })
 
@@ -80,32 +79,18 @@ export default function DsmPage() {
         backgroundColor: BG,
         borderBottom: '1px solid rgba(255,255,255,0.08)',
       }}>
-        <div style={{
-          maxWidth: 1440, margin: '0 auto',
-          padding: isMobile ? '14px 16px' : '14px 36px',
-          display: 'flex', alignItems: 'center', gap: 20,
-        }}>
-          <button
-            onClick={() => router.push('/design')}
-            style={{
-              background: 'none',
-              border: '1px solid rgba(176,198,247,0.3)',
-              color: MUTED, cursor: 'pointer',
-              padding: '5px 12px',
-              fontSize: 22, letterSpacing: '0.06em',
-              flexShrink: 0, whiteSpace: 'nowrap',
-            }}
-          >
-            ← Graphic Design
-          </button>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '14px 16px' : '14px 36px', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', gap: 8, alignItems: 'flex-end', flexShrink: 0, paddingBottom: '0px' }}>
+            <button onClick={() => router.push('/design')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Graphic Design
+            </button>
+            <button onClick={() => router.push('/')} style={{ background: 'none', border: '1px solid rgba(176,198,247,0.3)', color: MUTED, cursor: 'pointer', padding: '5px 12px', fontSize: 13, letterSpacing: '0.06em', whiteSpace: 'nowrap', borderRadius: 0, fontFamily: 'inherit', fontWeight: 600 }}>
+              ← Home
+            </button>
+          </div>
           {!isMobile && (
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <SiteHeader
-                nameColor="#ffffff"
-                bioColor={MUTED}
-                designerColor={ACCENT}
-                linkColor={MUTED}
-              />
+            <div style={{ flex: 1, minWidth: 0, paddingLeft: 24, paddingBottom: '0px' }}>
+              <SiteHeader nameColor="#ffffff" bioColor={MUTED} designerColor={ACCENT} linkColor={MUTED} />
             </div>
           )}
         </div>
@@ -123,10 +108,10 @@ export default function DsmPage() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'flex-end',
-          padding: isMobile ? '48px 16px 36px' : '72px 36px 36px',
+          padding: 0,
         }}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', width: '100%', padding: isMobile ? '48px 16px 36px' : '72px 36px 36px', boxSizing: 'border-box' }}>
           <p style={{
             fontSize: 22, fontWeight: 600, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: ACCENT, marginBottom: 16,
@@ -294,9 +279,9 @@ export default function DsmPage() {
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible"
         viewport={VP} transition={FV}
-        style={sec({ padding: isMobile ? '32px 16px' : '48px 36px' })}
+        style={sec()}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px' : '48px 36px', boxSizing: 'border-box' }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
@@ -324,9 +309,9 @@ export default function DsmPage() {
       <motion.section
         variants={fadeUp} initial="hidden" whileInView="visible"
         viewport={VP} transition={FV}
-        style={sec({ padding: isMobile ? '32px 16px 160px' : '48px 36px 140px' })}
+        style={sec()}
       >
-        <div style={{ maxWidth: 1440, margin: '0 auto' }}>
+        <div style={{ maxWidth: 1440, margin: '0 auto', padding: isMobile ? '32px 16px 160px' : '48px 36px 140px', boxSizing: 'border-box' }}>
           <p style={EYEBROW}>Technical detail</p>
           {/* Row 1 */}
           <div style={{

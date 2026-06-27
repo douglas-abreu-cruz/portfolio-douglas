@@ -21,8 +21,6 @@ body {
 .hub-outer {
   position: relative;
   z-index: 10;
-  height: 100vh;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
@@ -34,65 +32,75 @@ body {
   padding: 20px 28px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
   box-sizing: border-box;
-  height: 100%;
 }
 
 .hub-grid {
-  flex: 1;
-  min-height: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: auto;
   gap: 2px;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   box-sizing: border-box;
+  justify-content: center;
 }
 
 .area-card-cell {
-  min-height: 0;
   min-width: 0;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 9;
   box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
 }
 
 .project-cell-item {
-  min-height: 0;
   min-width: 0;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 9;
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
 
+.gallery-carousel {
+  order: unset;
+}
+
+.hub-grid-preview {
+  order: unset;
+}
+
+.carousel-row-2 {
+  display: none;
+}
+
 /* ── Typography ──────────────────────────────────────────────────────────── */
 
 .hub-name {
-  font-size: clamp(32px, 3.8vw, 52px);
+  font-size: clamp(20px, 4vw, 42px);
   font-weight: 700;
   letter-spacing: -0.01em;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
 }
 
 .hub-bio {
-  font-size: clamp(14px, 1.6vw, 22px);
+  font-size: clamp(10px, 0.9vw, 15px);
   line-height: 1.5;
-  white-space: pre-line;
+  white-space: normal;
   overflow: hidden;
 }
 
 .hub-nav-link {
-  font-size: clamp(13px, 1.3vw, 18px);
+  font-size: clamp(11px, 1vw, 16px);
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
+  line-height: 1.5;
 }
 
 .card-title {
@@ -266,51 +274,98 @@ body {
     padding: 20px 16px;
     gap: 16px;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .gallery-carousel {
+    margin-top: 8px;
+  }
+
+  .carousel-row-2 {
+    display: flex;
   }
 
   .hub-grid {
-    display: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 2px;
+    flex: none;
+    height: auto;
+  }
+
+  .area-card-cell {
+    height: auto;
+    min-height: 64px;
+  }
+
+  .project-cell-item {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    height: auto;
   }
 
   .mobile-area-nav {
+    display: none;
+  }
+
+  .hub-inner {
     display: flex;
     flex-direction: column;
-    border: 1px solid #e8e8e8;
+  }
+
+  .gallery-carousel {
+    order: 2;
+  }
+
+  .hub-grid-preview {
+    order: 1;
   }
 
   .site-header-row {
     flex-direction: column;
     gap: 6px;
-  }
-
-  .hub-name {
-    font-size: 20px;
-    white-space: normal;
-  }
-
-  .hub-bio {
-    font-size: 12px;
-  }
-
-  .hub-nav-link {
-    font-size: 12px;
+    align-items: flex-start;
+    width: 100%;
   }
 
   .site-header-nav {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-self: flex-start;
+    align-items: center;
     gap: 16px;
     padding-top: 0;
   }
 
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 2px;
+  .site-header-nav-desktop {
+    display: none !important;
   }
 
-  .flip-card-outer {
-    height: 220px;
+  .site-header-nav-mobile {
+    display: flex !important;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .hub-name {
+    font-size: clamp(28px, 7vw, 42px);
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .hub-bio {
+    font-size: clamp(12px, 3.5vw, 16px);
+    line-height: 1.5;
+    white-space: normal;
+    overflow: visible;
+  }
+
+  .hub-nav-link {
+    font-size: 13px;
   }
 
   .gallery-header {
@@ -324,6 +379,16 @@ body {
   .gallery-title {
     font-size: 20px;
     margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .flip-card-outer {
+    height: 220px;
   }
 
   .expanded-image-area {
