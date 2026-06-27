@@ -29,7 +29,8 @@
       "Skill(claude-api)",
       "Bash(npx motion-primitives@latest add text-shimmer)",
       "PowerShell(Rename-Item *)",
-      "PowerShell(Copy-Item *)"
+      "PowerShell(Copy-Item *)",
+      "PowerShell(git *)"
     ]
   }
 }

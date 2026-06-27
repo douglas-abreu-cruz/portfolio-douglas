@@ -59,9 +59,12 @@ export function GalleryCarousel() {
     }
 
     function autoPlay() {
+      const track = trackRef.current
+      if (!track) { s.autoRafId = requestAnimationFrame(autoPlay); return }
       if (s.isDragging) { s.autoRafId = requestAnimationFrame(autoPlay); return }
       s.x = s.x - AUTO_SPEED
-      s.x = clampInfinite(s.x)
+      const sw = track.scrollWidth / 3
+      if (s.x < -sw * 2) s.x = s.x + sw
       track.style.transform = `translateX(${s.x}px)`
       s.autoRafId = requestAnimationFrame(autoPlay)
     }
