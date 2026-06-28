@@ -90,23 +90,27 @@ export function FlipCard({
         transition: 'opacity 0.25s ease',
       }} />
 
-      {/* Tab — nome no topo direito */}
+      {/* Tab — nome centralizado */}
       <div style={{
-        position: 'absolute', top: 0, right: 0, zIndex: 4,
-        display: 'inline-flex', alignItems: 'center',
-        padding: '5px 12px 7px',
-        backgroundColor: tabBg,
+        position: 'absolute', top: 0, left: 0, right: 0, zIndex: 4,
+        display: 'flex', justifyContent: 'center',
         pointerEvents: 'none',
       }}>
-        <span style={{
-          fontSize: 11, fontWeight: 600,
-          letterSpacing: '0.06em',
-          textTransform: 'uppercase',
-          whiteSpace: 'nowrap',
-          color: tabText,
+        <div style={{
+          display: 'inline-flex', alignItems: 'center',
+          padding: '4px 10px',
+          backgroundColor: `${tabBg}B3`,
         }}>
-          {title}
-        </span>
+          <span style={{
+            fontSize: 11, fontWeight: 600,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
+            color: tabText,
+          }}>
+            {title}
+          </span>
+        </div>
       </div>
 
       {/* Tools — inferior */}

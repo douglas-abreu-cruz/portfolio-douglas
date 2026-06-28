@@ -17,7 +17,7 @@ const ITEMS = [
 
 const INFINITE_ITEMS = [...ITEMS, ...ITEMS, ...ITEMS]
 const ITEM_HEIGHT = 282
-const ITEM_GAP = 8
+const ITEM_GAP = 24
 const AUTO_SPEED = 0.4
 
 export function GalleryCarousel() {

@@ -355,26 +355,31 @@ export default function Home() {
                     </>
                   )}
                   <div style={{
-                    position: 'absolute', top: 0, right: 0, zIndex: 4,
-                    display: 'inline-flex', alignItems: 'center',
-                    padding: '5px 12px 7px',
-                    backgroundColor: tabBg,
+                    position: 'absolute', top: 0, left: 0, right: 0, zIndex: 4,
+                    display: 'flex', justifyContent: 'center',
+                    pointerEvents: 'none',
                   }}>
-                    <span style={{
-                      fontSize: 11, fontWeight: 600,
-                      letterSpacing: '0.06em',
-                      textTransform: 'uppercase',
-                      whiteSpace: 'nowrap',
-                      color: isHovered ? '#ffffff' : tabText,
-                      textShadow: isHovered
-                        ? (current?.key === 'cg'
-                            ? '0 0 8px #E86100, 0 0 16px #E86100aa'
-                            : '0 0 8px #90bde0, 0 0 16px #6B2D8Baa')
-                        : 'none',
-                      transition: 'text-shadow 0.3s ease, color 0.3s ease',
+                    <div style={{
+                      display: 'inline-flex', alignItems: 'center',
+                      padding: '4px 10px',
+                      backgroundColor: `${tabBg}B3`,
                     }}>
-                      {projectName}
-                    </span>
+                      <span style={{
+                        fontSize: 11, fontWeight: 600,
+                        letterSpacing: '0.06em',
+                        textTransform: 'uppercase',
+                        whiteSpace: 'nowrap',
+                        color: isHovered ? '#ffffff' : tabText,
+                        textShadow: isHovered
+                          ? (current?.key === 'cg'
+                              ? '0 0 8px #E86100, 0 0 16px #E86100aa'
+                              : '0 0 8px #90bde0, 0 0 16px #6B2D8Baa')
+                          : 'none',
+                        transition: 'text-shadow 0.3s ease, color 0.3s ease',
+                      }}>
+                        {projectName}
+                      </span>
+                    </div>
                   </div>
                 </motion.div>
               )
